@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/com/voidSpirit/productCycle/view/TambahProdukFrame.java</file>
+            <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/com/voidSpirit/productCycle/view/MainFrame.java</file>
             <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/com/voidSpirit/productCycle/controller/ProdukController.java</file>
             <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/com/voidSpirit/productCycle/model/Produk.java</file>
+            <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/com/voidSpirit/productCycle/view/KelolaProdukFrame.java</file>
             <file>file:/C:/Users/Zikri/Documents/NetBeansProjects/VOID/src/main/Main.java</file>
         </group>
     </open-files>

@@ -5,8 +5,8 @@
  */
 package com.voidSpirit.productCycle.controller;
 
-import com.voidSpirit.productCycle.view.TambahProdukFrame;
 import com.voidSpirit.productCycle.model.Produk;
+import com.voidSpirit.productCycle.view.MainFrame;
 
 /**
  *
@@ -14,14 +14,14 @@ import com.voidSpirit.productCycle.model.Produk;
  */
 public class ProdukController {
     
-    TambahProdukFrame tambahFrame;
+    MainFrame mainFrame;
     
     public ProdukController() {
-        tambahFrame = new TambahProdukFrame();
+        mainFrame = new MainFrame();
     }
     
     public void start() {
-        tambahFrame.setVisible(true);
+        mainFrame.setVisible(true);
     }
     
             
@@ -29,6 +29,5 @@ public class ProdukController {
             
         return new Produk(namaProduk, idJenisProduk, hargaProduk, stokProduk);
             
-    }   
-    
+    }
 }
