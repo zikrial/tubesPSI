@@ -7,6 +7,7 @@ package com.voidSpirit.productCycle.view;
 
 import com.voidSpirit.productCycle.controller.ProdukController;
 import com.voidSpirit.productCycle.model.Produk;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,7 @@ public class TambahProdukFrame extends javax.swing.JFrame {
         textFieldHarga = new javax.swing.JTextField();
         texttFieldStok = new javax.swing.JTextField();
         buttonSubmit = new javax.swing.JButton();
-        textFieldJenis = new javax.swing.JTextField();
+        cmbJenis = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,13 @@ public class TambahProdukFrame extends javax.swing.JFrame {
             }
         });
 
+        cmbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Jenis --", "Makanan", "Minuman", " " }));
+        cmbJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbJenisActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,8 +94,9 @@ public class TambahProdukFrame extends javax.swing.JFrame {
                                     .addComponent(buttonKembali)))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textFieldJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1)))
+                                .addComponent(jLabel1)
+                                .addComponent(cmbJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(2, 2, 2))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -104,7 +113,7 @@ public class TambahProdukFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(18, 18, 18)
                                     .addComponent(texttFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,10 +127,10 @@ public class TambahProdukFrame extends javax.swing.JFrame {
                     .addComponent(labelNama)
                     .addComponent(textFieldNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelJenis)
-                    .addComponent(textFieldJenis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cmbJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelHarga)
                     .addComponent(textFieldHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,19 +140,25 @@ public class TambahProdukFrame extends javax.swing.JFrame {
                     .addComponent(texttFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSubmit)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubmitActionPerformed
-        int jenis = Integer.parseInt(textFieldJenis.getText());
+        int jenis = 0;
+        if (cmbJenis.getSelectedItem().equals("Makanan")){
+            jenis = 1;
+        } else {
+            jenis = 2;
+        }
         int harga = Integer.parseInt(textFieldHarga.getText());
         int stok = Integer.parseInt(texttFieldStok.getText());
         String nama = textFieldNama.getText();
-        
         Produk p = ProdukController.tambahProduk(nama, jenis, harga, stok);
+        
+        JOptionPane.showMessageDialog(rootPane, "Item Baru telah ditambahkan");
 
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
@@ -151,6 +166,10 @@ public class TambahProdukFrame extends javax.swing.JFrame {
         new MainFrame().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_buttonKembaliActionPerformed
+
+    private void cmbJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbJenisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,13 +209,13 @@ public class TambahProdukFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonKembali;
     private javax.swing.JButton buttonSubmit;
+    private javax.swing.JComboBox<String> cmbJenis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelHarga;
     private javax.swing.JLabel labelJenis;
     private javax.swing.JLabel labelNama;
     private javax.swing.JLabel labelStok;
     private javax.swing.JTextField textFieldHarga;
-    private javax.swing.JTextField textFieldJenis;
     private javax.swing.JTextField textFieldNama;
     private javax.swing.JTextField texttFieldStok;
     // End of variables declaration//GEN-END:variables
