@@ -6,14 +6,20 @@
 package com.voidSpirit.productCycle.view;
 
 import com.voidSpirit.productCycle.controller.ProdukController;
-import com.voidSpirit.productCycle.model.Produk;
+import com.voidSpirit.productCycle.model.pojo.Produk;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Zikri
  */
 public class TambahProdukFrame extends javax.swing.JFrame {
+
+    ProdukController con = new ProdukController();
 
     /**
      * Creates new form TambahProdukFrame
@@ -148,18 +154,26 @@ public class TambahProdukFrame extends javax.swing.JFrame {
 
     private void buttonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubmitActionPerformed
         int jenis = 0;
-        if (cmbJenis.getSelectedItem().equals("Makanan")){
+        if (cmbJenis.getSelectedItem().equals("Makanan")) {
             jenis = 1;
         } else {
             jenis = 2;
         }
         int harga = Integer.parseInt(textFieldHarga.getText());
         int stok = Integer.parseInt(texttFieldStok.getText());
+        int status = 0;
         String nama = textFieldNama.getText();
-        Produk p = ProdukController.tambahProduk(nama, jenis, harga, stok);
-        
-        JOptionPane.showMessageDialog(rootPane, "Item Baru telah ditambahkan");
 
+        try {
+            status = con.tambahProduk(new Produk(nama, jenis, harga, stok));
+        } catch (SQLException ex) {
+            Logger.getLogger(TambahProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (status == 1) {
+            JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil ditambahkan");
+        } else {
+            JOptionPane.showMessageDialog(this, "Produk gagal ditambahkan");
+        }
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     private void buttonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembaliActionPerformed

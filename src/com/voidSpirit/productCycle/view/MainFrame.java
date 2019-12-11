@@ -36,26 +36,25 @@ public class MainFrame extends javax.swing.JFrame {
         lblPenjulanProduk = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(780, 400));
 
         lblHalUtama.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblHalUtama.setText("Halaman Utama");
 
-        btnPindahTambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\tubesPSI\\assets\\1.png")); // NOI18N
+        btnPindahTambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\1.png")); // NOI18N
         btnPindahTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPindahTambahActionPerformed(evt);
             }
         });
 
-        btnPindahKelola.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\tubesPSI\\assets\\2.png")); // NOI18N
+        btnPindahKelola.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\2.png")); // NOI18N
         btnPindahKelola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPindahKelolaActionPerformed(evt);
             }
         });
 
-        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\tubesPSI\\assets\\3.png")); // NOI18N
+        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\3.png")); // NOI18N
 
         lblTambahBarangBaru.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTambahBarangBaru.setText("Tambah Barang Baru");
