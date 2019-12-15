@@ -6,6 +6,11 @@
 package com.voidSpirit.productCycle.view;
 
 import com.voidSpirit.productCycle.controller.ProdukController;
+import com.voidSpirit.productCycle.model.pojo.Produk;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,9 +24,27 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
      */
     
     private DefaultTableModel model;
+    ProdukController con = new ProdukController();
     
-    public KelolaProdukFrame() {
+    public KelolaProdukFrame() throws SQLException {
         initComponents();
+        populateDataToTable();
+    }
+    
+    public void populateDataToTable() throws SQLException {
+        model = (DefaultTableModel) tabelProduk.getModel();
+          List<Produk> prd = con.lihatProduk();
+          int i = 0;
+
+        for (Produk pr : prd) {
+            Object[] row = new Object[5];
+            row[0] = ++i;
+            row[1] = pr.getNamaProduk();
+            row[2] = pr.getIdJenisProduk();
+            row[3] = pr.getHargaProduk();
+            row[4] = pr.getStokProduk();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -138,7 +161,11 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KelolaProdukFrame().setVisible(true);
+                try {
+                    new KelolaProdukFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

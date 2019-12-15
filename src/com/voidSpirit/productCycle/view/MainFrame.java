@@ -5,6 +5,10 @@
  */
 package com.voidSpirit.productCycle.view;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Zikri
@@ -121,7 +125,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPindahTambahActionPerformed
 
     private void btnPindahKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahKelolaActionPerformed
-        new KelolaProdukFrame().setVisible(true);
+        try {
+            new KelolaProdukFrame().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_btnPindahKelolaActionPerformed
 

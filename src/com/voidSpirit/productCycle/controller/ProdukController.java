@@ -9,6 +9,7 @@ import com.voidSpirit.productCycle.model.data.ProdukModel;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import com.voidSpirit.productCycle.view.MainFrame;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -29,5 +30,10 @@ public class ProdukController {
     public int tambahProduk(Produk produk) throws SQLException {
         ProdukModel model = new ProdukModel();
         return model.simpanProduk(produk);
+    }
+    
+    public List<Produk> lihatProduk() throws SQLException{
+        ProdukModel model = new ProdukModel();
+        return model.lihatProduk();
     }
 }
