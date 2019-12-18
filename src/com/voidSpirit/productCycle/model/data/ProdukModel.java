@@ -39,7 +39,7 @@ public class ProdukModel {
 
         try {
             Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT nama_produk, jen FROM produk");
+            ResultSet rs = state.executeQuery("SELECT * FROM produk");
             listProduk = new ArrayList<>();
             while (rs.next()) {
                 Produk prd = new Produk();
