@@ -44,30 +44,30 @@ public class MainFrame extends javax.swing.JFrame {
         lblHalUtama.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblHalUtama.setText("Halaman Utama");
 
-        btnPindahTambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\1.png")); // NOI18N
+        btnPindahTambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VoidSpirit\\assets\\1.png")); // NOI18N
         btnPindahTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPindahTambahActionPerformed(evt);
             }
         });
 
-        btnPindahKelola.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\2.png")); // NOI18N
+        btnPindahKelola.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VoidSpirit\\assets\\2.png")); // NOI18N
         btnPindahKelola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPindahKelolaActionPerformed(evt);
             }
         });
 
-        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VOID\\assets\\3.png")); // NOI18N
+        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zikri\\Documents\\NetBeansProjects\\VoidSpirit\\assets\\3.png")); // NOI18N
 
         lblTambahBarangBaru.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblTambahBarangBaru.setText("Tambah Barang Baru");
+        lblTambahBarangBaru.setText("Penjualan Produk");
 
         lblKelolaBarang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblKelolaBarang.setText("Kelola Barang");
 
         lblPenjulanProduk.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblPenjulanProduk.setText("Penjualan Produk");
+        lblPenjulanProduk.setText("Pelaporan");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,23 +79,23 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(214, 214, 214)
                         .addComponent(lblHalUtama))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lblTambahBarangBaru)
-                                .addGap(70, 70, 70)
+                                .addGap(41, 41, 41)
                                 .addComponent(lblKelolaBarang)
-                                .addGap(88, 88, 88)
+                                .addGap(59, 59, 59)
+                                .addComponent(lblTambahBarangBaru)
+                                .addGap(58, 58, 58)
                                 .addComponent(lblPenjulanProduk)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnPindahTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
+                                .addComponent(btnPindahTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,16 +104,16 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(lblHalUtama)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnPindahTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPindahTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTambahBarangBaru)
-                    .addComponent(lblKelolaBarang)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblKelolaBarang)
+                        .addComponent(lblTambahBarangBaru))
                     .addComponent(lblPenjulanProduk))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         pack();
