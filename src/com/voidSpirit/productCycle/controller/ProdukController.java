@@ -27,10 +27,19 @@ public class ProdukController {
     public void start() {
         mainFrame.setVisible(true);
     }
-
+       
+    public int ubahProduk(Produk produk) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.gantiProduk(produk);
+    }
     public int tambahProduk(Produk produk) throws SQLException {
         ProdukModel model = new ProdukModel();
         return model.simpanProduk(produk);
+    }
+    
+     public int hapusProduk(Produk produk) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.buangProduk(produk);
     }
     
     public int tambahJenis(JenisProduk jenisProduk) throws SQLException {

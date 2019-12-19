@@ -104,7 +104,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         labelHarga = new javax.swing.JLabel();
         labelStok = new javax.swing.JLabel();
         textFieldNama = new javax.swing.JTextField();
-        cmbJenis = new javax.swing.JComboBox<>();
+        cmbJenis = new javax.swing.JComboBox<String>();
         textFieldHarga = new javax.swing.JTextField();
         texttFieldStok = new javax.swing.JTextField();
         labelNama1 = new javax.swing.JLabel();
@@ -183,6 +183,12 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         });
 
         labelNama1.setText("Id Produk");
+
+        textFieldId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldIdActionPerformed(evt);
+            }
+        });
 
         btnTambahJenis.setText("TAMBAH MENU");
         btnTambahJenis.addActionListener(new java.awt.event.ActionListener() {
@@ -306,11 +312,43 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        // TODO add your handling code here:
+        int id = Integer.valueOf(textFieldId.getText());        
+        String nama = textFieldNama.getText();
+        String jenis = (String) cmbJenis.getSelectedItem();
+        int harga = Integer.parseInt(textFieldHarga.getText());
+        int stok = Integer.parseInt(texttFieldStok.getText());
+        int status = 0;
+
+        try {
+            status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
+        } catch (SQLException ex) {
+            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (status == 1) {
+            JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
+        } else {
+            JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
+        }
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
+        int id = Integer.valueOf(textFieldId.getText());        
+        int status = 0;
+        try {
+            status = con.hapusProduk(new Produk(id));
+        } catch (SQLException ex) {
+            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (status == 1) {
+            JOptionPane.showMessageDialog(this, "Produk dengan " + id + " berhasil di Hapus");
+        } else {
+            JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
+        }
+        
+        
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void textFieldHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldHargaActionPerformed
@@ -363,6 +401,10 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnTambahJenisActionPerformed
+
+    private void textFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldIdActionPerformed
 
     /**
      * @param args the command line arguments

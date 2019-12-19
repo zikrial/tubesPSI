@@ -38,6 +38,37 @@ public class ProdukModel {
         }
     }
     
+    public int gantiProduk(Produk produk) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        try {
+                PreparedStatement stat = con.prepareStatement("UPDATE pengelola_produk.produk SET nama_produk=?, id_jenis_produk=?, harga_produk=?, stok_produk=? WHERE id=?");
+                stat.setString(1, produk.getNamaProduk());
+                stat.setInt(2, getIdJenisProduk(produk.getNamaJenis()));
+                stat.setInt(3, produk.getHargaProduk());
+                stat.setInt(4, produk.getStokProduk());
+                stat.setInt(5, produk.getId());
+                return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    public int buangProduk(Produk produk) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        try {
+                PreparedStatement stat = con.prepareStatement("DELETE FROM pengelola_produk.produk WHERE id=?");
+                stat.setInt(1, produk.getId());
+                return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    
      public int simpanJenis(JenisProduk jenisProduk) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
