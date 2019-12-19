@@ -133,6 +133,11 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                 "#", "Nama", "Jenis", "Harga Satuan", "Stok"
             }
         ));
+        tabelProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelProdukMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelProduk);
 
         btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-plus-64.png"))); // NOI18N
@@ -184,6 +189,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
         labelNama1.setText("Id Produk");
 
+        textFieldId.setEnabled(false);
         textFieldId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldIdActionPerformed(evt);
@@ -312,7 +318,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        int id = Integer.valueOf(textFieldId.getText());        
+        int id = Integer.valueOf(textFieldId.getText());
         String nama = textFieldNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
         int harga = Integer.parseInt(textFieldHarga.getText());
@@ -320,7 +326,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         int status = 0;
 
         try {
-            status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
+            status = con.ubahProduk(new Produk(nama, jenis, harga, stok));
         } catch (SQLException ex) {
             Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -334,10 +340,14 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-        int id = Integer.valueOf(textFieldId.getText());        
+        int id = Integer.valueOf(textFieldId.getText());
+        String nama = textFieldNama.getText();
+        String jenis = (String) cmbJenis.getSelectedItem();
+        int harga = Integer.parseInt(textFieldHarga.getText());
+        int stok = Integer.parseInt(texttFieldStok.getText());
         int status = 0;
         try {
-            status = con.hapusProduk(new Produk(id));
+            status = con.hapusProduk(new Produk(nama, jenis, harga, stok));
         } catch (SQLException ex) {
             Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -347,8 +357,8 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void textFieldHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldHargaActionPerformed
@@ -405,6 +415,29 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private void textFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldIdActionPerformed
+
+    private void tabelProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelProdukMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+        int selectedIndex = tabelProduk.getSelectedRow();
+
+        String nama = model.getValueAt(selectedIndex, 1).toString();
+        String jenis = model.getValueAt(selectedIndex, 2).toString();
+        int harga = (int) model.getValueAt(selectedIndex, 3);
+        int stok = (int) model.getValueAt(selectedIndex, 4);
+
+        try {
+            int id = con.cariId(new Produk(nama, jenis, harga, stok));
+            textFieldId.setText(Integer.toString(id));
+            textFieldNama.setText(nama);
+            cmbJenis.setSelectedItem(jenis);
+            textFieldHarga.setText(model.getValueAt(selectedIndex, 3).toString());
+            texttFieldStok.setText(model.getValueAt(selectedIndex, 4).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_tabelProdukMouseClicked
 
     /**
      * @param args the command line arguments

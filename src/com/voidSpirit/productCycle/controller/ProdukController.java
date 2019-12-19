@@ -56,4 +56,9 @@ public class ProdukController {
         ProdukModel model = new ProdukModel();
         return model.tampilJenis();
     }
+    
+    public int cariId(Produk produk) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.getId(produk);
+    }
 }
