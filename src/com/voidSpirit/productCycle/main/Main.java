@@ -13,8 +13,8 @@ import com.voidSpirit.productCycle.controller.ProdukController;
  */
 public class Main {
     public static void main(String[] args) {
-        ProdukController mhs = new ProdukController();
-        mhs.start();
+        ProdukController prd = new ProdukController();
+        prd.start();
     }
 }
 

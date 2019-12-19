@@ -12,20 +12,20 @@ package com.voidSpirit.productCycle.model.pojo;
 public class Produk {
 
     private String namaProduk;
-    private int idJenisProduk;
+    private String namaJenis;
     private int hargaProduk;
     private int stokProduk;
 
-    public Produk(String namaProduk, int idJenisProduk, int hargaProduk, int stokProduk) {
+    public Produk(String namaProduk, String namaJenis, int hargaProduk, int stokProduk) {
         this.namaProduk = namaProduk;
-        this.idJenisProduk = idJenisProduk;
+        this.namaJenis = namaJenis;
         this.hargaProduk = hargaProduk;
         this.stokProduk = stokProduk;
     }
     
     public Produk() {
         namaProduk = "";
-        idJenisProduk = 0;
+        namaJenis = "";
         hargaProduk = 0;
         stokProduk = 0;
     }
@@ -38,12 +38,12 @@ public class Produk {
         this.namaProduk = namaProduk;
     }
 
-    public int getIdJenisProduk() {
-        return idJenisProduk;
+    public String getNamaJenis() {
+        return namaJenis;
     }
 
-    public void setIdJenisProduk(int idJenisProduk) {
-        this.idJenisProduk = idJenisProduk;
+    public void setNamaJenis(String namaJenis) {
+        this.namaJenis = namaJenis;
     }
 
     public int getHargaProduk() {

@@ -36,4 +36,9 @@ public class ProdukController {
         ProdukModel model = new ProdukModel();
         return model.lihatProduk();
     }
+    
+    public List<Produk> lihatJenis() throws SQLException{
+        ProdukModel model = new ProdukModel();
+        return model.tampilJenis();
+    }
 }

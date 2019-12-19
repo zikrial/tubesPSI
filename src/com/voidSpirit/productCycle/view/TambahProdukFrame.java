@@ -78,7 +78,7 @@ public class TambahProdukFrame extends javax.swing.JFrame {
             }
         });
 
-        cmbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Jenis --", "Makanan", "Minuman", " " }));
+        cmbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Jenis --", " " }));
         cmbJenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbJenisActionPerformed(evt);
@@ -153,12 +153,13 @@ public class TambahProdukFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubmitActionPerformed
-        int jenis = 0;
-        if (cmbJenis.getSelectedItem().equals("Makanan")) {
-            jenis = 1;
-        } else {
-            jenis = 2;
-        }
+//        int jenis = 0;
+//        if (cmbJenis.getSelectedItem().equals("Makanan")) {
+//            jenis = 1;
+//        } else {
+//            jenis = 2;
+//        }
+        String jenis = (String) cmbJenis.getSelectedItem();
         int harga = Integer.parseInt(textFieldHarga.getText());
         int stok = Integer.parseInt(texttFieldStok.getText());
         int status = 0;
