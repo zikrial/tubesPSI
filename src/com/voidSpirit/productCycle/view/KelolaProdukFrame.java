@@ -6,6 +6,7 @@
 package com.voidSpirit.productCycle.view;
 
 import com.voidSpirit.productCycle.controller.ProdukController;
+import com.voidSpirit.productCycle.model.pojo.JenisProduk;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,16 +30,16 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     public KelolaProdukFrame() throws SQLException {
         initComponents();
-        populateDataToTable();
         ukuranKolom();
         isiKolom();
         this.setLocationRelativeTo(null);
+        populateDataToTable();
     }
 
     public void isiKolom() throws SQLException {
         List<Produk> prd = con.lihatJenis();
-        
-        cmbJenis.addItem("-- PILIH JENIS --");
+
+        cmbJenis.addItem("-- Pilih Jenis --");
         for (Produk pr : prd) {
             cmbJenis.addItem(pr.getNamaJenis());
         }
@@ -75,6 +76,12 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         column.setPreferredWidth(100);
     }
 
+    public void refreshTable() throws SQLException {
+        DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+        model.setRowCount(0);
+        populateDataToTable();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +109,9 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         texttFieldStok = new javax.swing.JTextField();
         labelNama1 = new javax.swing.JLabel();
         textFieldId = new javax.swing.JTextField();
+        btnTambahJenis = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        textFieldMenu = new javax.swing.JTextField();
 
         jLabel1.setText("Kelola Barang");
 
@@ -174,6 +184,15 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
         labelNama1.setText("Id Produk");
 
+        btnTambahJenis.setText("TAMBAH MENU");
+        btnTambahJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahJenisActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Jenis baru :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,6 +206,17 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(352, 352, 352))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(btnTambah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,18 +237,19 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                                     .addComponent(cmbJenis, javax.swing.GroupLayout.Alignment.LEADING, 0, 300, Short.MAX_VALUE)
                                     .addComponent(textFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textFieldId, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(texttFieldStok)))
+                                    .addComponent(texttFieldStok))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel3)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(btnTambah)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
-                        .addContainerGap())))
+                                .addComponent(textFieldMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnTambahJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +282,13 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                             .addComponent(texttFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(112, 112, 112))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(textFieldMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnTambah)
                             .addComponent(btnUbah)
@@ -288,16 +325,17 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         textFieldId.getText();
         String nama = textFieldNama.getText();
+        String jenis = (String) cmbJenis.getSelectedItem();
         int harga = Integer.parseInt(textFieldHarga.getText());
         int stok = Integer.parseInt(texttFieldStok.getText());
-        String jenis = (String) cmbJenis.getSelectedItem();
         int status = 0;
 
         try {
             status = con.tambahProduk(new Produk(nama, jenis, harga, stok));
         } catch (SQLException ex) {
-            Logger.getLogger(TambahProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if (status == 1) {
             JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil ditambahkan");
         } else {
@@ -305,21 +343,27 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTambahActionPerformed
 
-//    public void lihatProduk() {
-//        model = (DefaultTableModel) tabelProduk.getModel();
-//        ProdukController con = new ProdukController();
-//        Produk[] pr;
-//        
-//        for(int i = 0; i < pr.length; i++) {
-//            String[] row = new String[5];
-//            row[0] = ""+(i+1);
-//            row[1] = pr[i].getNamaProduk();
-//            row[2] = pr[i].getIdJenisProduk();
-//            row[3] = pr[i].getHargaProduk();
-//            row[4] = pr[i].getStokProduk();
-//            model.addRow(row);
-//        }
-//    }
+    private void btnTambahJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahJenisActionPerformed
+        // TODO add your handling code here:
+        String jenis = textFieldMenu.getText();
+
+        int status = 0;
+        try {
+
+            DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+            status = con.tambahJenis(new JenisProduk(jenis));
+            refreshTable();
+
+        } catch (SQLException ex) {
+        }
+        if (status == 1) {
+            JOptionPane.showMessageDialog(this, "Jenis " + jenis + " berhasil ditambahkan");
+        } else {
+            JOptionPane.showMessageDialog(this, "Jenis gagal ditambahkan");
+        }
+
+    }//GEN-LAST:event_btnTambahJenisActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,10 +407,12 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnTambah;
+    private javax.swing.JButton btnTambahJenis;
     private javax.swing.JButton btnUbah;
     private javax.swing.JComboBox<String> cmbJenis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelHarga;
     private javax.swing.JLabel labelJenis;
@@ -376,6 +422,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private javax.swing.JTable tabelProduk;
     private javax.swing.JTextField textFieldHarga;
     private javax.swing.JTextField textFieldId;
+    private javax.swing.JTextField textFieldMenu;
     private javax.swing.JTextField textFieldNama;
     private javax.swing.JTextField texttFieldStok;
     // End of variables declaration//GEN-END:variables

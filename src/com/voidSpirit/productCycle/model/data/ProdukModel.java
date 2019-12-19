@@ -5,6 +5,7 @@
  */
 package com.voidSpirit.productCycle.model.data;
 
+import com.voidSpirit.productCycle.model.pojo.JenisProduk;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import com.voidSpirit.productCycle.utilites.DatabaseUtilities;
 import java.sql.Connection;
@@ -24,7 +25,11 @@ public class ProdukModel {
     public int simpanProduk(Produk produk) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
-                PreparedStatement stat = con.prepareStatement("INSERT INTO pengelola_produk.produk (nama_produk, id_jenis_produk, harga_produk, stok_produk) VALUES ('" + produk.getNamaProduk() + "', " + setIdJenisProduk(produk.getNamaJenis()) + ", " + produk.getHargaProduk() + ", " + produk.getStokProduk() + ")");
+                PreparedStatement stat = con.prepareStatement("INSERT INTO pengelola_produk.produk (nama_produk, id_jenis_produk, harga_produk, stok_produk) VALUES (?,?,?,?)");
+                stat.setString(1, produk.getNamaProduk());
+                stat.setInt(2, getIdJenisProduk(produk.getNamaJenis()));
+                stat.setInt(3, produk.getHargaProduk());
+                stat.setInt(4, produk.getStokProduk());
                 return stat.executeUpdate();
         } finally {
             if (con != null) {
@@ -33,13 +38,28 @@ public class ProdukModel {
         }
     }
     
-    public int setIdJenisProduk(String namaJenis) throws SQLException {
+     public int simpanJenis(JenisProduk jenisProduk) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
-        int jenis;
+        try {
+                PreparedStatement stat = con.prepareStatement("INSERT INTO pengelola_produk.jenis_produk (nama_jenis) VALUES (?)");
+                stat.setString(1, jenisProduk.getNamaJenis());
+                return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+     
+    public int getIdJenisProduk(String namaJenis) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        int jenis = 0;
         try {
             Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT id_jenis_produk FROM produk NATURAL JOIN jenis_produk WHERE nama_jenis = " + namaJenis);
-            jenis = rs.getInt("id_jenis_produk");
+            ResultSet rs = state.executeQuery("SELECT id_jenis_produk FROM produk NATURAL JOIN jenis_produk WHERE nama_jenis = '" + namaJenis + "'");
+            while(rs.next()) {
+                jenis = rs.getInt("id_jenis_produk");
+            }
         } finally {
             if (con != null) {
                 con.close();

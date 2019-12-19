@@ -15,6 +15,9 @@ public class Produk {
     private String namaJenis;
     private int hargaProduk;
     private int stokProduk;
+    
+    private String menu;
+
 
     public Produk(String namaProduk, String namaJenis, int hargaProduk, int stokProduk) {
         this.namaProduk = namaProduk;
@@ -23,9 +26,22 @@ public class Produk {
         this.stokProduk = stokProduk;
     }
     
+    public Produk(String menu) {
+        this.menu = menu;
+    }
+    
+     public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
+    
     public Produk() {
         namaProduk = "";
         namaJenis = "";
+        menu = "";
         hargaProduk = 0;
         stokProduk = 0;
     }
