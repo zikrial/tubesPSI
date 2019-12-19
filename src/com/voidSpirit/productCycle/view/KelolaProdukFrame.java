@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -29,6 +30,8 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     public KelolaProdukFrame() throws SQLException {
         initComponents();
         populateDataToTable();
+        ukuranKolom();
+        this.setLocationRelativeTo(null);
     }
     
     public void populateDataToTable() throws SQLException {
@@ -45,6 +48,21 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
             row[4] = pr.getStokProduk();
             model.addRow(row);
         }
+    }
+    
+    public void ukuranKolom(){ 
+        TableColumn column;
+        tabelProduk.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF); 
+        column = tabelProduk.getColumnModel().getColumn(0); 
+        column.setPreferredWidth(100);
+        column = tabelProduk.getColumnModel().getColumn(1); 
+        column.setPreferredWidth(200); 
+        column = tabelProduk.getColumnModel().getColumn(2); 
+        column.setPreferredWidth(200); 
+        column = tabelProduk.getColumnModel().getColumn(3); 
+        column.setPreferredWidth(200); 
+        column = tabelProduk.getColumnModel().getColumn(4); 
+        column.setPreferredWidth(100); 
     }
 
     /**
@@ -162,11 +180,13 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        new MainFrame().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnKembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembali1ActionPerformed
-        // TODO add your handling code here:
+        new TambahProdukFrame().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnKembali1ActionPerformed
 
     private void btnKembali2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembali2ActionPerformed

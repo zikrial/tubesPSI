@@ -26,6 +26,7 @@ public class TambahProdukFrame extends javax.swing.JFrame {
      */
     public TambahProdukFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -176,7 +177,11 @@ public class TambahProdukFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     private void buttonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembaliActionPerformed
-        new MainFrame().setVisible(true);
+        try {
+            new KelolaProdukFrame().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TambahProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_buttonKembaliActionPerformed
 

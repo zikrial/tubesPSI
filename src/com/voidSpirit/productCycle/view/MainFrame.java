@@ -20,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,11 +32,11 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPindahTambah = new javax.swing.JButton();
-        btnPindahKelola = new javax.swing.JButton();
+        btnPindahLaporan = new javax.swing.JButton();
         btnPindahPenjualan = new javax.swing.JButton();
+        btnPindahKelola = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -45,39 +46,44 @@ public class MainFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(940, 800));
         setSize(new java.awt.Dimension(0, 0));
 
-        btnPindahTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pelaporan.png"))); // NOI18N
-        btnPindahTambah.setMaximumSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah.setMinimumSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah.setPreferredSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah.addActionListener(new java.awt.event.ActionListener() {
+        btnPindahLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pelaporan.png"))); // NOI18N
+        btnPindahLaporan.setMaximumSize(new java.awt.Dimension(80, 50));
+        btnPindahLaporan.setMinimumSize(new java.awt.Dimension(80, 50));
+        btnPindahLaporan.setPreferredSize(new java.awt.Dimension(80, 50));
+        btnPindahLaporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPindahTambahActionPerformed(evt);
+                btnPindahLaporanActionPerformed(evt);
             }
         });
 
-        btnPindahKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Penjulan.png"))); // NOI18N
-        btnPindahKelola.setMaximumSize(new java.awt.Dimension(80, 50));
-        btnPindahKelola.setMinimumSize(new java.awt.Dimension(80, 50));
-        btnPindahKelola.setPreferredSize(new java.awt.Dimension(80, 50));
-        btnPindahKelola.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPindahKelolaActionPerformed(evt);
-            }
-        });
-
-        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Kelola Produk.png"))); // NOI18N
+        btnPindahPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Penjulan.png"))); // NOI18N
         btnPindahPenjualan.setMaximumSize(new java.awt.Dimension(80, 50));
         btnPindahPenjualan.setMinimumSize(new java.awt.Dimension(80, 50));
+        btnPindahPenjualan.setPreferredSize(new java.awt.Dimension(80, 50));
         btnPindahPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPindahPenjualanActionPerformed(evt);
             }
         });
 
+        btnPindahKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Kelola Produk.png"))); // NOI18N
+        btnPindahKelola.setMaximumSize(new java.awt.Dimension(80, 50));
+        btnPindahKelola.setMinimumSize(new java.awt.Dimension(80, 50));
+        btnPindahKelola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPindahKelolaActionPerformed(evt);
+            }
+        });
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Banner.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Exit-32.png"))); // NOI18N
-        jButton1.setText("EXIT");
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Exit-32.png"))); // NOI18N
+        btnExit.setText("EXIT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Kelola Produk");
 
@@ -106,13 +112,13 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPindahTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPindahLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(btnExit))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addComponent(jLabel2)
@@ -129,10 +135,10 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPindahTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPindahKelola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPindahLaporan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPindahKelola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -148,10 +154,19 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPindahTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahTambahActionPerformed
-        new TambahProdukFrame().setVisible(true);
+    private void btnPindahLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahLaporanActionPerformed
+        new LaporanFrame().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnPindahTambahActionPerformed
+    }//GEN-LAST:event_btnPindahLaporanActionPerformed
+
+    private void btnPindahPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahPenjualanActionPerformed
+        new PenjualanFrame().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPindahPenjualanActionPerformed
+
+    private void btnPindahTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahTambah1ActionPerformed
+        // TODO add your handling code
+    }//GEN-LAST:event_btnPindahTambah1ActionPerformed
 
     private void btnPindahKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahKelolaActionPerformed
         try {
@@ -162,13 +177,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnPindahKelolaActionPerformed
 
-    private void btnPindahTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahTambah1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPindahTambah1ActionPerformed
-
-    private void btnPindahPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahPenjualanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPindahPenjualanActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,11 +217,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnPindahKelola;
+    private javax.swing.JButton btnPindahLaporan;
     private javax.swing.JButton btnPindahPenjualan;
-    private javax.swing.JButton btnPindahTambah;
     private javax.swing.JButton btnPindahTambah1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

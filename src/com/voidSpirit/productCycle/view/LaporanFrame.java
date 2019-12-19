@@ -26,6 +26,7 @@ public class LaporanFrame extends javax.swing.JFrame {
      */
     public LaporanFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
