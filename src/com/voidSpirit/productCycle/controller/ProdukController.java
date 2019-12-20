@@ -32,6 +32,7 @@ public class ProdukController {
         ProdukModel model = new ProdukModel();
         return model.gantiProduk(produk);
     }
+    
     public int tambahProduk(Produk produk) throws SQLException {
         ProdukModel model = new ProdukModel();
         return model.simpanProduk(produk);
@@ -55,6 +56,11 @@ public class ProdukController {
     public List<Produk> lihatJenis() throws SQLException{
         ProdukModel model = new ProdukModel();
         return model.tampilJenis();
+    }
+    
+    public List<Produk> lihatNama() throws SQLException{
+        ProdukModel model = new ProdukModel();
+        return model.tampilNama();
     }
     
     public int cariId(Produk produk) throws SQLException {

@@ -160,7 +160,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPindahLaporanActionPerformed
 
     private void btnPindahPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahPenjualanActionPerformed
-        new PenjualanFrame().setVisible(true);
+        try {
+            new PenjualanFrame().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_btnPindahPenjualanActionPerformed
 
