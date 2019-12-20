@@ -39,6 +39,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     public void isiKolom() throws SQLException {
         List<Produk> prd = con.lihatJenis();
 
+        cmbJenis.removeAllItems();
         cmbJenis.addItem("-- Pilih Jenis --");
         for (Produk pr : prd) {
             cmbJenis.addItem(pr.getNamaJenis());
@@ -312,7 +313,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        int id = Integer.valueOf(textFieldId.getText());        
+        int id = Integer.valueOf(textFieldId.getText());
         String nama = textFieldNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
         int harga = Integer.parseInt(textFieldHarga.getText());
@@ -326,6 +327,11 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
 
         if (status == 1) {
+            try {
+                refreshTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
         } else {
             JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
@@ -334,7 +340,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-        int id = Integer.valueOf(textFieldId.getText());        
+        int id = Integer.valueOf(textFieldId.getText());
         int status = 0;
         try {
             status = con.hapusProduk(new Produk(id));
@@ -343,12 +349,17 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
 
         if (status == 1) {
+            try {
+                refreshTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Produk dengan " + id + " berhasil di Hapus");
         } else {
             JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void textFieldHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldHargaActionPerformed
@@ -375,6 +386,11 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
 
         if (status == 1) {
+            try {
+                refreshTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil ditambahkan");
         } else {
             JOptionPane.showMessageDialog(this, "Produk gagal ditambahkan");
@@ -390,7 +406,8 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
             DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
             status = con.tambahJenis(new JenisProduk(jenis));
-            refreshTable();
+
+            isiKolom();
 
         } catch (SQLException ex) {
         }
