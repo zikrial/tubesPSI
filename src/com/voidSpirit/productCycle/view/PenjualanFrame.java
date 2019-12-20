@@ -9,6 +9,7 @@ import com.voidSpirit.productCycle.controller.ProdukController;
 import com.voidSpirit.productCycle.controller.TransaksiController;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import com.voidSpirit.productCycle.model.pojo.Transaksi;
+import com.voidSpirit.productCycle.utilites.ProdukUtilities;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,6 +36,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         isiKolom();
+        populateDataToTable();
     }
     
     
@@ -187,12 +189,12 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        // TODO add your handling code here
         // TODO add your handling code here:
         int status = 0;
-
+        
         try {
-            status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), 0));
+            int hargaTotal = conP.lihatHargaStok(new Produk(cmbNamaProduk.getSelectedItem().toString()), Integer.valueOf(tfStokTerjual.getText()));
+            status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), hargaTotal));
         } catch (SQLException ex) {
             Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }

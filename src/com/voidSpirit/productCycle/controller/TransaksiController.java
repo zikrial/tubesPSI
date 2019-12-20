@@ -21,7 +21,6 @@ public class TransaksiController {
         return model.simpanTransaksi(transaksi);
     }
     
-    
     public List<Transaksi> lihatTransaksi() throws SQLException{
         TransaksiModel model = new TransaksiModel();
         return model.lihatTransaksi();

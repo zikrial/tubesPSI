@@ -25,8 +25,8 @@ public class Produk {
         this.stokProduk = stokProduk;
     }
     
-    public Produk(String menu) {
-        this.menu = menu;
+    public Produk(String namaProduk) {
+        this.namaProduk = namaProduk;
     }
     
     public Produk() {

@@ -115,7 +115,7 @@ public class ProdukModel {
         return id;
     }
 
-    public List<Produk> tampilJenis() throws SQLException {
+    public List<Produk> getJenis() throws SQLException {
         List<Produk> listProduk;
         Connection con = DatabaseUtilities.getConnection();
         try {
@@ -136,7 +136,7 @@ public class ProdukModel {
         return listProduk;
     }
 
-    public List<Produk> tampilNama() throws SQLException {
+    public List<Produk> getNama() throws SQLException {
         List<Produk> listProduk;
         Connection con = DatabaseUtilities.getConnection();
         try {
@@ -155,6 +155,26 @@ public class ProdukModel {
             }
         }
         return listProduk;
+    }
+
+    public int getHargaStok(Produk produk, int stok) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        int harga = 0;
+        int hargaTotal = 0;
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("SELECT harga_produk, stok_produk FROM produk WHERE nama_produk = '" + produk.getNamaProduk() + "'");
+            while (rs.next()) {
+                harga = rs.getInt("harga_produk");
+                
+                hargaTotal = harga * stok;
+            }
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return hargaTotal;
     }
 
     public List<Produk> lihatProduk() throws SQLException {

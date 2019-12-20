@@ -55,12 +55,17 @@ public class ProdukController {
     
     public List<Produk> lihatJenis() throws SQLException{
         ProdukModel model = new ProdukModel();
-        return model.tampilJenis();
+        return model.getJenis();
     }
     
     public List<Produk> lihatNama() throws SQLException{
         ProdukModel model = new ProdukModel();
-        return model.tampilNama();
+        return model.getNama();
+    }
+    
+    public int lihatHargaStok(Produk produk, int stok) throws SQLException{
+        ProdukModel model = new ProdukModel();
+        return model.getHargaStok(produk, stok);
     }
     
     public int cariId(Produk produk) throws SQLException {
