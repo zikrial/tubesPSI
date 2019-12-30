@@ -259,21 +259,29 @@ public class PenjualanFrame extends javax.swing.JFrame {
 
         if (TransaksiUtilities.checkData(new Transaksi(nama, stok))) {
             try {
-                int hargaTotal = conP.lihatHargaStok(new Produk(cmbNamaProduk.getSelectedItem().toString()), Integer.valueOf(tfStokTerjual.getText()));
-                status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), hargaTotal));
-            } catch (SQLException ex) {
-                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                if (TransaksiUtilities.checkStok(conP.cariStok(nama), stok)) {
+                    try {
+                        int hargaTotal = conP.lihatHargaStok(new Produk(cmbNamaProduk.getSelectedItem().toString()), Integer.valueOf(tfStokTerjual.getText()));
+                        status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), hargaTotal));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-            if (status == 1) {
-                try {
-                    refreshTable();
-                } catch (SQLException ex) {
-                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    if (status == 1) {
+                        try {
+                            refreshTable();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        JOptionPane.showMessageDialog(this, "Transaksi berhasil ditambahkan");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Transaksi gagal ditambahkan");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Stok yang diinput melebihi batas");
                 }
-                JOptionPane.showMessageDialog(this, "Transaksi berhasil ditambahkan");
-            } else {
-                JOptionPane.showMessageDialog(this, "Transaksi gagal ditambahkan");
+            } catch (SQLException ex) {
+                Logger.getLogger(PenjualanFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Inputan tidak boleh kosong");
@@ -338,19 +346,31 @@ public class PenjualanFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblTransaksi.getModel();
         int baris = model.getRowCount();
         int total = 0;
+        int stok = 0;
         int status1 = 0;
         int status2 = 0;
+        int status3 = 0;
         for (int i = 0; i < baris; i++) {
             total = total + (int) model.getValueAt(i, 3);
         }
-        try {
-            status1 = conL.tambahProduk(new Laporan(total));
-            status2 = conT.hapusSemuaTransaksi();
-            refreshTable();
-        } catch (SQLException ex) {
+        for (int i = 0; i < baris; i++) {
+            try {
+                String nama = (String) model.getValueAt(i, 1);
+                stok = conP.cariStok((String) model.getValueAt(i, 1)) - (int) model.getValueAt(i, 2);
+                status3 = conP.ubahStok(nama, stok);
+            } catch (SQLException ex) {
+                Logger.getLogger(PenjualanFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (total != 0) {
-            if (status1 == 1) {
+            try {
+                status1 = conL.tambahProduk(new Laporan(total));
+                status2 = conT.hapusSemuaTransaksi();
+                refreshTable();
+            } catch (SQLException ex) {
+            }
+
+            if (status1 == 1 || status2 == 0) {
                 JOptionPane.showMessageDialog(null, "Transaksi telah berhasil dengan hasil penjualan sebanyak Rp." + Integer.toString(total));
             } else {
                 JOptionPane.showMessageDialog(this, "Transaksi gagal");

@@ -38,9 +38,9 @@ public class ProdukController {
         return model.simpanProduk(produk);
     }
     
-     public int hapusProduk(Produk produk) throws SQLException {
+     public int hapusProduk(int id) throws SQLException {
         ProdukModel model = new ProdukModel();
-        return model.buangProduk(produk);
+        return model.buangProduk(id);
     }
     
     public int tambahJenis(JenisProduk jenisProduk) throws SQLException {
@@ -73,8 +73,13 @@ public class ProdukController {
         return model.getId(produk);
     }
     
-//    public int kurangStok(Produk produk, int stok, int stokTerjual) throws SQLException {
-//        ProdukModel model = new ProdukModel();
-//        return model.updateStok(produk, stok, stokTerjual);
-//    }
+    public int cariStok(String nama) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.getStok(nama);
+    }
+    
+    public int ubahStok(String nama, int stok) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.updateStok(nama, stok);
+    }
 }

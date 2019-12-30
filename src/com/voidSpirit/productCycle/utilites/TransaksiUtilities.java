@@ -26,4 +26,12 @@ public class TransaksiUtilities {
         }
         return false;
     }
+    
+    public static boolean checkStok(int stok, int stokTerjual) {
+        if(stok > stokTerjual) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

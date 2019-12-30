@@ -370,30 +370,15 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
         int id;
-        tfId.getText();
-        String nama = tfNama.getText();
-        String jenis = (String) cmbJenis.getSelectedItem();
-        int stok;
-        int harga;
+        int status = 0;
         if (!tfId.getText().equals("")) {
             id = Integer.valueOf(tfId.getText());
         } else {
             id = 0;
         }
-        if (!tfStok.getText().equals("")) {
-            stok = Integer.parseInt(tfStok.getText());
-        } else {
-            stok = 0;
-        }
-        if (!tfHarga.getText().equals("")) {
-            harga = Integer.parseInt(tfHarga.getText());
-        } else {
-            harga = 0;
-        }
-        int status = 0;
         if (ProdukUtilities.checkDataId(id)) {
             try {
-                status = con.hapusProduk(new Produk(id));
+                status = con.hapusProduk(id);
             } catch (SQLException ex) {
                 Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -404,7 +389,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(this, "Produk dengan " + id + " berhasil di Hapus");
+                JOptionPane.showMessageDialog(this, "Produk dengan id " + id + " berhasil di Hapus");
             } else {
                 JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
             }
@@ -418,7 +403,6 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-        tfId.getText();
         String nama = tfNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
         int stok;

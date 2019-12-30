@@ -56,11 +56,11 @@ public class ProdukModel {
         }
     }
 
-    public int buangProduk(Produk produk) throws SQLException {
+    public int buangProduk(int id) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
             PreparedStatement stat = con.prepareStatement("DELETE FROM pengelola_produk.produk WHERE id=?");
-            stat.setInt(1, getId(produk));
+            stat.setInt(1, id);
             return stat.executeUpdate();
         } finally {
             if (con != null) {
@@ -167,7 +167,7 @@ public class ProdukModel {
             ResultSet rs = state.executeQuery("SELECT harga_produk, stok_produk FROM produk WHERE nama_produk = '" + produk.getNamaProduk() + "'");
             while (rs.next()) {
                 harga = rs.getInt("harga_produk");
-                
+
                 hargaTotal = harga * stok;
             }
         } finally {
@@ -203,19 +203,29 @@ public class ProdukModel {
         }
         return listProduk;
     }
-    
-    public int updateStok(int stok, int stokTerjual) throws SQLException {
-        List<Produk> listProduk;
+
+    public int updateStok(String nama, int stok) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
-            Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("UPDATE produk SET stok_produk = " + stok + "WHERE id=?");
-            listProduk = new ArrayList<>();
-            while (rs.next()) {
-                Produk prd = new Produk();
-                prd.setStokProduk(rs.getInt("stok_produk") - stokTerjual);
+            PreparedStatement stat = con.prepareStatement("UPDATE pengelola_produk.produk SET stok_produk=? WHERE nama_produk=?");
+            stat.setInt(1, stok);
+            stat.setString(2, nama);
+            return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 
-                listProduk.add(prd);
+    public int getStok(String nama) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        int stok = 0;
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("SELECT stok_produk FROM produk WHERE nama_produk = '" + nama + "'");
+            while (rs.next()) {
+                stok = rs.getInt("stok_produk");
             }
         } finally {
             if (con != null) {

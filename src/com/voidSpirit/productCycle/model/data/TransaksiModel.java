@@ -20,7 +20,7 @@ import java.util.List;
  * @author Zikri
  */
 public class TransaksiModel {
-    
+
     public int simpanTransaksi(Transaksi transaksi) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
@@ -35,8 +35,8 @@ public class TransaksiModel {
             }
         }
     }
-    
-        public List<Transaksi> lihatTransaksi() throws SQLException {
+
+    public List<Transaksi> lihatTransaksi() throws SQLException {
         List<Transaksi> listTransaksi;
         Connection con = DatabaseUtilities.getConnection();
 
@@ -59,7 +59,7 @@ public class TransaksiModel {
         }
         return listTransaksi;
     }
-        
+
     public int getId(Transaksi transaksi) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         int id = 0;
@@ -76,7 +76,7 @@ public class TransaksiModel {
         }
         return id;
     }
-    
+
     public int buangTransaksi(int id) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
@@ -89,7 +89,7 @@ public class TransaksiModel {
             }
         }
     }
-    
+
     public int buangSeluruhTransaksi() throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
 
