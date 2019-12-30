@@ -45,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
 
-        btnPindahLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pelaporan.png"))); // NOI18N
+        btnPindahLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-accounting-64.png"))); // NOI18N
         btnPindahLaporan.setMaximumSize(new java.awt.Dimension(80, 50));
         btnPindahLaporan.setMinimumSize(new java.awt.Dimension(80, 50));
         btnPindahLaporan.setPreferredSize(new java.awt.Dimension(80, 50));
@@ -65,7 +65,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btnPindahKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Kelola Produk.png"))); // NOI18N
+        btnPindahKelola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-view-64.png"))); // NOI18N
         btnPindahKelola.setMaximumSize(new java.awt.Dimension(80, 50));
         btnPindahKelola.setMinimumSize(new java.awt.Dimension(80, 50));
         btnPindahKelola.addActionListener(new java.awt.event.ActionListener() {
@@ -121,13 +121,15 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPindahLaporan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPindahKelola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                    .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPenjualan)

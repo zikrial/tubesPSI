@@ -80,7 +80,7 @@ public class LaporanFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("LAPORAN PRODUK");
+        jLabel1.setText("PELAPORAN PRODUK");
 
         tblLaporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,6 +92,7 @@ public class LaporanFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblLaporan);
 
+        btnCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pelaporan.png"))); // NOI18N
         btnCetak.setText("Cetak");
         btnCetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,19 +105,22 @@ public class LaporanFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(381, 381, 381)
-                        .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnKembali)
-                        .addGap(229, 229, 229)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(282, Short.MAX_VALUE))
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 208, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(318, 318, 318))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(180, 180, 180))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +129,11 @@ public class LaporanFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnKembali)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(53, 53, 53)
                 .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         pack();

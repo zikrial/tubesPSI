@@ -98,12 +98,13 @@ public class PenjualanFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHalUtama.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblHalUtama.setText("HASIL PENJUALAN");
+        lblHalUtama.setText("PENJUALAN PRODUK");
 
         lblNama.setText("Nama  Produk :");
 
         lblStok.setText("Stok terjual : ");
 
+        btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-plus-64.png"))); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +141,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblTransaksi);
 
+        btnProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-process-64.png"))); // NOI18N
         btnProses.setText("Proses");
         btnProses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +149,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-minus-64.png"))); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +170,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnKembali)
-                        .addGap(238, 238, 238)
+                        .addGap(239, 239, 239)
                         .addComponent(lblHalUtama))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -194,10 +197,13 @@ public class PenjualanFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHalUtama)
-                    .addComponent(btnKembali))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnKembali))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblHalUtama)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -212,7 +218,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
                             .addComponent(tfStokTerjual, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +227,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         pack();
