@@ -12,6 +12,7 @@ import com.voidSpirit.productCycle.model.pojo.Laporan;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import com.voidSpirit.productCycle.model.pojo.Transaksi;
 import com.voidSpirit.productCycle.utilites.ProdukUtilities;
+import com.voidSpirit.productCycle.utilites.TransaksiUtilities;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -86,7 +87,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         btnTambah = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         tfStokTerjual = new javax.swing.JTextField();
-        cmbNamaProduk = new javax.swing.JComboBox<String>();
+        cmbNamaProduk = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransaksi = new javax.swing.JTable();
         buttonProses = new javax.swing.JButton();
@@ -115,6 +116,12 @@ public class PenjualanFrame extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        tfStokTerjual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfStokTerjualKeyTyped(evt);
             }
         });
 
@@ -223,50 +230,80 @@ public class PenjualanFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new MainFrame().setVisible(true);
         this.setVisible(false);
+
+        int status = 0;
+        try {
+            status = conT.hapusSemuaTransaksi();
+            refreshTable();
+        } catch (SQLException ex) {
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
         int status = 0;
+        int stok;
+        String nama = cmbNamaProduk.getSelectedItem().toString();
 
-        try {
-            int hargaTotal = conP.lihatHargaStok(new Produk(cmbNamaProduk.getSelectedItem().toString()), Integer.valueOf(tfStokTerjual.getText()));
-            status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), hargaTotal));
-        } catch (SQLException ex) {
-            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+        if (!tfStokTerjual.getText().equals("")) {
+            stok = Integer.valueOf(tfStokTerjual.getText());
+        } else {
+            stok = 0;
         }
 
-        if (status == 1) {
+        if (TransaksiUtilities.checkData(new Transaksi(nama, stok))) {
             try {
-                refreshTable();
+                int hargaTotal = conP.lihatHargaStok(new Produk(cmbNamaProduk.getSelectedItem().toString()), Integer.valueOf(tfStokTerjual.getText()));
+                status = conT.tambahTransaksi(new Transaksi(cmbNamaProduk.getSelectedItem().toString(), Integer.valueOf(tfStokTerjual.getText()), hargaTotal));
             } catch (SQLException ex) {
                 Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, "Transaksi berhasil ditambahkan");
+
+            if (status == 1) {
+                try {
+                    refreshTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(this, "Transaksi berhasil ditambahkan");
+            } else {
+                JOptionPane.showMessageDialog(this, "Transaksi gagal ditambahkan");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Transaksi gagal ditambahkan");
+            JOptionPane.showMessageDialog(null, "Inputan tidak boleh kosong");
         }
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-        int id = Integer.valueOf(tfId.getText());
+        int id;
         int status = 0;
-        try {
-            status = conT.hapusTransaksi(id);
-        } catch (SQLException ex) {
-            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (!tfId.getText().equals("")) {
+            id = Integer.valueOf(tfId.getText());
+        } else {
+            id = 0;
         }
 
-        if (status == 1) {
+        if (TransaksiUtilities.checkDataId(id)) {
             try {
-                refreshTable();
+                status = conT.hapusTransaksi(id);
             } catch (SQLException ex) {
-                Logger.getLogger(PenjualanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, "Transaksi dengan " + id + " berhasil di Hapus");
+
+            if (status == 1) {
+                try {
+                    refreshTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PenjualanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(this, "Transaksi dengan " + id + " berhasil di Hapus");
+            } else {
+                JOptionPane.showMessageDialog(this, "Transaksi gagal diHapus");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Transaksi gagal diHapus");
+            JOptionPane.showMessageDialog(null, "Silahkan pilih yang ingin dihapus");
         }
 
     }//GEN-LAST:event_btnHapusActionPerformed
@@ -306,12 +343,21 @@ public class PenjualanFrame extends javax.swing.JFrame {
             refreshTable();
         } catch (SQLException ex) {
         }
-        if (status1 == 1) {
-            JOptionPane.showMessageDialog(null, "Transaksi telah berhasil dengan hasil penjualan sebanyak Rp." + Integer.toString(total));
+        if (total != 0) {
+            if (status1 == 1) {
+                JOptionPane.showMessageDialog(null, "Transaksi telah berhasil dengan hasil penjualan sebanyak Rp." + Integer.toString(total));
+            } else {
+                JOptionPane.showMessageDialog(this, "Transaksi gagal");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Transaksi gagal");
+            JOptionPane.showMessageDialog(null, "Transaksi masih kosong");
         }
     }//GEN-LAST:event_buttonProsesActionPerformed
+
+    private void tfStokTerjualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStokTerjualKeyTyped
+        // TODO add your handling code here:
+        ProdukUtilities.checkNumber(evt);
+    }//GEN-LAST:event_tfStokTerjualKeyTyped
 
     /**
      * @param args the command line arguments

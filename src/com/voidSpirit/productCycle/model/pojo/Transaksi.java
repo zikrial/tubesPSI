@@ -33,6 +33,11 @@ public class Transaksi {
         this.namaProduk = namaProduk;
         this.stokTerjual = stokTerjual;
     }
+    
+    public Transaksi(String namaProduk, int stokTerjual) {
+        this.namaProduk = namaProduk;
+        this.stokTerjual = stokTerjual;
+    }
 
     public int getId() {
         return id;
