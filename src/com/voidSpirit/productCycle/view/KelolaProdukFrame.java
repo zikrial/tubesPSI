@@ -8,6 +8,7 @@ package com.voidSpirit.productCycle.view;
 import com.voidSpirit.productCycle.controller.ProdukController;
 import com.voidSpirit.productCycle.model.pojo.JenisProduk;
 import com.voidSpirit.productCycle.model.pojo.Produk;
+import com.voidSpirit.productCycle.utilites.ProdukUtilities;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -105,7 +106,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         labelHarga = new javax.swing.JLabel();
         labelStok = new javax.swing.JLabel();
         textFieldNama = new javax.swing.JTextField();
-        cmbJenis = new javax.swing.JComboBox<String>();
+        cmbJenis = new javax.swing.JComboBox<>();
         textFieldHarga = new javax.swing.JTextField();
         texttFieldStok = new javax.swing.JTextField();
         labelNama1 = new javax.swing.JLabel();
@@ -176,26 +177,21 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
         labelStok.setText("Stok Produk   ");
 
-        cmbJenis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbJenisActionPerformed(evt);
+        textFieldHarga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldHargaKeyTyped(evt);
             }
         });
 
-        textFieldHarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldHargaActionPerformed(evt);
+        texttFieldStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                texttFieldStokKeyTyped(evt);
             }
         });
 
         labelNama1.setText("Id Produk");
 
         textFieldId.setEnabled(false);
-        textFieldId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldIdActionPerformed(evt);
-            }
-        });
 
         btnTambahJenis.setText("TAMBAH MENU");
         btnTambahJenis.addActionListener(new java.awt.event.ActionListener() {
@@ -321,27 +317,42 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         int id = Integer.valueOf(textFieldId.getText());
+        textFieldId.getText();
         String nama = textFieldNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
-        int harga = Integer.parseInt(textFieldHarga.getText());
-        int stok = Integer.parseInt(texttFieldStok.getText());
+        int stok;
+        int harga;
+        if (!texttFieldStok.getText().equals("")) {
+            stok = Integer.parseInt(texttFieldStok.getText());
+        } else {
+            stok = 0;
+        }
+        if (!textFieldHarga.getText().equals("")) {
+            harga = Integer.parseInt(textFieldHarga.getText());
+        } else {
+            harga = 0;
+        }
         int status = 0;
 
-        try {
-            status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
-        } catch (SQLException ex) {
-            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (status == 1) {
+        if (ProdukUtilities.checkData(new Produk(nama, jenis, stok, harga))) {
             try {
-                refreshTable();
+                status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
             } catch (SQLException ex) {
                 Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
+
+            if (status == 1) {
+                try {
+                    refreshTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
+            } else {
+                JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
+            JOptionPane.showMessageDialog(this, "Inputan tidak boleh kosong");
         }
     }//GEN-LAST:event_btnUbahActionPerformed
 
@@ -373,40 +384,48 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void textFieldHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldHargaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldHargaActionPerformed
-
-    private void cmbJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJenisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbJenisActionPerformed
-
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
         textFieldId.getText();
         String nama = textFieldNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
-        System.out.println(jenis);
-        int harga = Integer.parseInt(textFieldHarga.getText());
-        int stok = Integer.parseInt(texttFieldStok.getText());
+        int stok;
+        int harga;
+        if (!texttFieldStok.getText().equals("")) {
+            stok = Integer.parseInt(texttFieldStok.getText());
+        } else {
+            stok = 0;
+        }
+        if (!textFieldHarga.getText().equals("")) {
+            harga = Integer.parseInt(textFieldHarga.getText());
+        } else {
+            harga = 0;
+        }
         int status = 0;
 
-        try {
-            status = con.tambahProduk(new Produk(nama, jenis, harga, stok));
-        } catch (SQLException ex) {
-            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (status == 1) {
+        if (ProdukUtilities.checkData(new Produk(nama, jenis, stok, harga))) {
             try {
-                refreshTable();
+                status = con.tambahProduk(new Produk(nama, jenis, harga, stok));
             } catch (SQLException ex) {
                 Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil ditambahkan");
+
+            if (status == 1) {
+                try {
+                    refreshTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil ditambahkan");
+            } else {
+                JOptionPane.showMessageDialog(this, "Produk gagal ditambahkan");
+            }
+
         } else {
-            JOptionPane.showMessageDialog(this, "Produk gagal ditambahkan");
+            JOptionPane.showMessageDialog(this, "Inputan tidak boleh kosong");
         }
+
+
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnTambahJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahJenisActionPerformed
@@ -414,26 +433,27 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         String jenis = textFieldMenu.getText();
 
         int status = 0;
-        try {
 
-            DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
-            status = con.tambahJenis(new JenisProduk(jenis));
+        if (ProdukUtilities.checkData(jenis)) {
+            try {
 
-            isiKolom();
+                DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+                status = con.tambahJenis(new JenisProduk(jenis));
 
-        } catch (SQLException ex) {
-        }
-        if (status == 1) {
-            JOptionPane.showMessageDialog(this, "Jenis " + jenis + " berhasil ditambahkan");
+                isiKolom();
+
+            } catch (SQLException ex) {
+            }
+            if (status == 1) {
+                JOptionPane.showMessageDialog(this, "Jenis " + jenis + " berhasil ditambahkan");
+            } else {
+                JOptionPane.showMessageDialog(this, "Jenis gagal ditambahkan");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Jenis gagal ditambahkan");
+            JOptionPane.showMessageDialog(null, "Inputan tidak boleh kosong");
         }
 
     }//GEN-LAST:event_btnTambahJenisActionPerformed
-
-    private void textFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldIdActionPerformed
 
     private void tabelProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelProdukMouseClicked
         // TODO add your handling code here:
@@ -457,6 +477,16 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tabelProdukMouseClicked
+
+    private void textFieldHargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldHargaKeyTyped
+        // TODO add your handling code here:
+        ProdukUtilities.checkNumber(evt);
+    }//GEN-LAST:event_textFieldHargaKeyTyped
+
+    private void texttFieldStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texttFieldStokKeyTyped
+        // TODO add your handling code here:
+        ProdukUtilities.checkNumber(evt);
+    }//GEN-LAST:event_texttFieldStokKeyTyped
 
     /**
      * @param args the command line arguments
