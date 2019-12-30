@@ -48,7 +48,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }
 
     public void populateDataToTable() throws SQLException {
-        model = (DefaultTableModel) tabelProduk.getModel();
+        model = (DefaultTableModel) tblProduk.getModel();
         List<Produk> prd = con.lihatProduk();
         int i = 0;
 
@@ -65,21 +65,21 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     public void ukuranKolom() {
         TableColumn column;
-        tabelProduk.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        column = tabelProduk.getColumnModel().getColumn(0);
+        tblProduk.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        column = tblProduk.getColumnModel().getColumn(0);
         column.setPreferredWidth(100);
-        column = tabelProduk.getColumnModel().getColumn(1);
+        column = tblProduk.getColumnModel().getColumn(1);
         column.setPreferredWidth(275);
-        column = tabelProduk.getColumnModel().getColumn(2);
+        column = tblProduk.getColumnModel().getColumn(2);
         column.setPreferredWidth(200);
-        column = tabelProduk.getColumnModel().getColumn(3);
+        column = tblProduk.getColumnModel().getColumn(3);
         column.setPreferredWidth(200);
-        column = tabelProduk.getColumnModel().getColumn(4);
+        column = tblProduk.getColumnModel().getColumn(4);
         column.setPreferredWidth(100);
     }
 
     public void refreshTable() throws SQLException {
-        DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblProduk.getModel();
         model.setRowCount(0);
         populateDataToTable();
     }
@@ -96,24 +96,24 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnKembali = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelProduk = new javax.swing.JTable();
+        tblProduk = new javax.swing.JTable();
         btnTambah = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        labelNama = new javax.swing.JLabel();
-        labelJenis = new javax.swing.JLabel();
-        labelHarga = new javax.swing.JLabel();
-        labelStok = new javax.swing.JLabel();
-        textFieldNama = new javax.swing.JTextField();
+        lblNama = new javax.swing.JLabel();
+        lblJenis = new javax.swing.JLabel();
+        lblHarga = new javax.swing.JLabel();
+        lblStok = new javax.swing.JLabel();
+        tfNama = new javax.swing.JTextField();
         cmbJenis = new javax.swing.JComboBox<>();
-        textFieldHarga = new javax.swing.JTextField();
-        texttFieldStok = new javax.swing.JTextField();
-        labelNama1 = new javax.swing.JLabel();
-        textFieldId = new javax.swing.JTextField();
+        tfHarga = new javax.swing.JTextField();
+        tfStok = new javax.swing.JTextField();
+        lblIdProduk = new javax.swing.JLabel();
+        tfId = new javax.swing.JTextField();
         btnTambahJenis = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        textFieldMenu = new javax.swing.JTextField();
+        tfMenu = new javax.swing.JTextField();
 
         jLabel1.setText("Kelola Barang");
 
@@ -127,7 +127,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
             }
         });
 
-        tabelProduk.setModel(new javax.swing.table.DefaultTableModel(
+        tblProduk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -135,12 +135,12 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                 "#", "Nama", "Jenis", "Harga Satuan", "Stok"
             }
         ));
-        tabelProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblProduk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelProdukMouseClicked(evt);
+                tblProdukMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelProduk);
+        jScrollPane1.setViewportView(tblProduk);
 
         btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-plus-64.png"))); // NOI18N
         btnTambah.setText("Tambah");
@@ -169,29 +169,29 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("KELOLA PRODUK");
 
-        labelNama.setText("Nama Produk  ");
+        lblNama.setText("Nama Produk  ");
 
-        labelJenis.setText("Jenis Produk   ");
+        lblJenis.setText("Jenis Produk   ");
 
-        labelHarga.setText("Harga Satuan ");
+        lblHarga.setText("Harga Satuan ");
 
-        labelStok.setText("Stok Produk   ");
+        lblStok.setText("Stok Produk   ");
 
-        textFieldHarga.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfHarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textFieldHargaKeyTyped(evt);
+                tfHargaKeyTyped(evt);
             }
         });
 
-        texttFieldStok.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfStok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                texttFieldStokKeyTyped(evt);
+                tfStokKeyTyped(evt);
             }
         });
 
-        labelNama1.setText("Id Produk");
+        lblIdProduk.setText("Id Produk");
 
-        textFieldId.setEnabled(false);
+        tfId.setEnabled(false);
 
         btnTambahJenis.setText("TAMBAH MENU");
         btnTambahJenis.addActionListener(new java.awt.event.ActionListener() {
@@ -229,24 +229,24 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelHarga, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblHarga, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(39, 39, 39)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelNama1)
+                                            .addComponent(lblIdProduk)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(labelNama, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(labelJenis, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblNama, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblJenis, javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addComponent(labelStok)
+                                                    .addComponent(lblStok)
                                                     .addGap(2, 2, 2))))))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(textFieldHarga, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfHarga, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbJenis, javax.swing.GroupLayout.Alignment.LEADING, 0, 300, Short.MAX_VALUE)
-                                    .addComponent(textFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textFieldId, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(texttFieldStok))
+                                    .addComponent(tfNama, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfStok))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -254,7 +254,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnTambahJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,30 +271,30 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNama1))
+                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdProduk))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNama))
+                            .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNama))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelJenis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblJenis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbJenis))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelHarga))
+                            .addComponent(tfHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHarga))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelStok)
-                            .addComponent(texttFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblStok)
+                            .addComponent(tfStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(112, 112, 112))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(textFieldMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTambahJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(102, 102, 102)
@@ -316,27 +316,81 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        int id = Integer.valueOf(textFieldId.getText());
-        textFieldId.getText();
-        String nama = textFieldNama.getText();
+        int id;
+        tfId.getText();
+        String nama = tfNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
         int stok;
         int harga;
-        if (!texttFieldStok.getText().equals("")) {
-            stok = Integer.parseInt(texttFieldStok.getText());
+        if (!tfId.getText().equals("")) {
+            id = Integer.valueOf(tfId.getText());
+        } else {
+            id = 0;
+        }
+        if (!tfStok.getText().equals("")) {
+            stok = Integer.parseInt(tfStok.getText());
         } else {
             stok = 0;
         }
-        if (!textFieldHarga.getText().equals("")) {
-            harga = Integer.parseInt(textFieldHarga.getText());
+        if (!tfHarga.getText().equals("")) {
+            harga = Integer.parseInt(tfHarga.getText());
         } else {
             harga = 0;
         }
         int status = 0;
+        if (ProdukUtilities.checkDataId(id)) {
+            if (ProdukUtilities.checkData(new Produk(nama, jenis, stok, harga))) {
+                try {
+                    status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
+                } catch (SQLException ex) {
+                    Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-        if (ProdukUtilities.checkData(new Produk(nama, jenis, stok, harga))) {
+                if (status == 1) {
+                    try {
+                        refreshTable();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Inputan tidak boleh kosong");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih yang ingin diubah");
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        int id;
+        tfId.getText();
+        String nama = tfNama.getText();
+        String jenis = (String) cmbJenis.getSelectedItem();
+        int stok;
+        int harga;
+        if (!tfId.getText().equals("")) {
+            id = Integer.valueOf(tfId.getText());
+        } else {
+            id = 0;
+        }
+        if (!tfStok.getText().equals("")) {
+            stok = Integer.parseInt(tfStok.getText());
+        } else {
+            stok = 0;
+        }
+        if (!tfHarga.getText().equals("")) {
+            harga = Integer.parseInt(tfHarga.getText());
+        } else {
+            harga = 0;
+        }
+        int status = 0;
+        if (ProdukUtilities.checkDataId(id)) {
             try {
-                status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
+                status = con.hapusProduk(new Produk(id));
             } catch (SQLException ex) {
                 Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -347,57 +401,32 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(this, "Produk " + nama + " berhasil di Ubah");
+                JOptionPane.showMessageDialog(this, "Produk dengan " + id + " berhasil di Hapus");
             } else {
-                JOptionPane.showMessageDialog(this, "Produk gagal di Ubah");
+                JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Inputan tidak boleh kosong");
+            JOptionPane.showMessageDialog(null, "Silahkan pilih yang poduk yang ingin dihapus");
         }
-    }//GEN-LAST:event_btnUbahActionPerformed
-
-    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        // TODO add your handling code here:
-        int id = Integer.valueOf(textFieldId.getText());
-        String nama = textFieldNama.getText();
-        String jenis = (String) cmbJenis.getSelectedItem();
-        int harga = Integer.parseInt(textFieldHarga.getText());
-        int stok = Integer.parseInt(texttFieldStok.getText());
-        int status = 0;
-        try {
-            status = con.hapusProduk(new Produk(nama, jenis, harga, stok));
-        } catch (SQLException ex) {
-            Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (status == 1) {
-            try {
-                refreshTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JOptionPane.showMessageDialog(this, "Produk dengan " + id + " berhasil di Hapus");
-        } else {
-            JOptionPane.showMessageDialog(this, "Produk gagal diHapus");
-        }
+        
 
 
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
-        textFieldId.getText();
-        String nama = textFieldNama.getText();
+        tfId.getText();
+        String nama = tfNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
         int stok;
         int harga;
-        if (!texttFieldStok.getText().equals("")) {
-            stok = Integer.parseInt(texttFieldStok.getText());
+        if (!tfStok.getText().equals("")) {
+            stok = Integer.parseInt(tfStok.getText());
         } else {
             stok = 0;
         }
-        if (!textFieldHarga.getText().equals("")) {
-            harga = Integer.parseInt(textFieldHarga.getText());
+        if (!tfHarga.getText().equals("")) {
+            harga = Integer.parseInt(tfHarga.getText());
         } else {
             harga = 0;
         }
@@ -430,14 +459,14 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     private void btnTambahJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahJenisActionPerformed
         // TODO add your handling code here:
-        String jenis = textFieldMenu.getText();
+        String jenis = tfMenu.getText();
 
         int status = 0;
 
         if (ProdukUtilities.checkData(jenis)) {
             try {
 
-                DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
+                DefaultTableModel model = (DefaultTableModel) tblProduk.getModel();
                 status = con.tambahJenis(new JenisProduk(jenis));
 
                 isiKolom();
@@ -455,10 +484,10 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnTambahJenisActionPerformed
 
-    private void tabelProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelProdukMouseClicked
+    private void tblProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdukMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tabelProduk.getModel();
-        int selectedIndex = tabelProduk.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblProduk.getModel();
+        int selectedIndex = tblProduk.getSelectedRow();
 
         String nama = model.getValueAt(selectedIndex, 1).toString();
         String jenis = model.getValueAt(selectedIndex, 2).toString();
@@ -467,26 +496,26 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
 
         try {
             int id = con.cariId(new Produk(nama, jenis, harga, stok));
-            textFieldId.setText(Integer.toString(id));
-            textFieldNama.setText(nama);
+            tfId.setText(Integer.toString(id));
+            tfNama.setText(nama);
             cmbJenis.setSelectedItem(jenis);
-            textFieldHarga.setText(model.getValueAt(selectedIndex, 3).toString());
-            texttFieldStok.setText(model.getValueAt(selectedIndex, 4).toString());
+            tfHarga.setText(model.getValueAt(selectedIndex, 3).toString());
+            tfStok.setText(model.getValueAt(selectedIndex, 4).toString());
         } catch (SQLException ex) {
             Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_tabelProdukMouseClicked
+    }//GEN-LAST:event_tblProdukMouseClicked
 
-    private void textFieldHargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldHargaKeyTyped
+    private void tfHargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfHargaKeyTyped
         // TODO add your handling code here:
         ProdukUtilities.checkNumber(evt);
-    }//GEN-LAST:event_textFieldHargaKeyTyped
+    }//GEN-LAST:event_tfHargaKeyTyped
 
-    private void texttFieldStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texttFieldStokKeyTyped
+    private void tfStokKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStokKeyTyped
         // TODO add your handling code here:
         ProdukUtilities.checkNumber(evt);
-    }//GEN-LAST:event_texttFieldStokKeyTyped
+    }//GEN-LAST:event_tfStokKeyTyped
 
     /**
      * @param args the command line arguments
@@ -538,16 +567,16 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelHarga;
-    private javax.swing.JLabel labelJenis;
-    private javax.swing.JLabel labelNama;
-    private javax.swing.JLabel labelNama1;
-    private javax.swing.JLabel labelStok;
-    private javax.swing.JTable tabelProduk;
-    private javax.swing.JTextField textFieldHarga;
-    private javax.swing.JTextField textFieldId;
-    private javax.swing.JTextField textFieldMenu;
-    private javax.swing.JTextField textFieldNama;
-    private javax.swing.JTextField texttFieldStok;
+    private javax.swing.JLabel lblHarga;
+    private javax.swing.JLabel lblIdProduk;
+    private javax.swing.JLabel lblJenis;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblStok;
+    private javax.swing.JTable tblProduk;
+    private javax.swing.JTextField tfHarga;
+    private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfMenu;
+    private javax.swing.JTextField tfNama;
+    private javax.swing.JTextField tfStok;
     // End of variables declaration//GEN-END:variables
 }

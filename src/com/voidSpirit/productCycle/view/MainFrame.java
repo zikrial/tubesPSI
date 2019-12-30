@@ -36,12 +36,11 @@ public class MainFrame extends javax.swing.JFrame {
         btnPindahLaporan = new javax.swing.JButton();
         btnPindahPenjualan = new javax.swing.JButton();
         btnPindahKelola = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblBanner = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnPindahTambah1 = new javax.swing.JButton();
+        lblKelola = new javax.swing.JLabel();
+        lblPenjualan = new javax.swing.JLabel();
+        lblPelaporan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
@@ -75,7 +74,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Banner.png"))); // NOI18N
+        lblBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Banner.png"))); // NOI18N
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Exit-32.png"))); // NOI18N
         btnExit.setText("EXIT");
@@ -85,49 +84,38 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Kelola Produk");
+        lblKelola.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblKelola.setText("Kelola Produk");
 
-        jLabel3.setText("Penjualan Produk");
+        lblPenjualan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblPenjualan.setText("Penjualan Produk");
 
-        jLabel4.setText("Pelaporan Produk");
-
-        btnPindahTambah1.setText("ABOUT US");
-        btnPindahTambah1.setMaximumSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah1.setMinimumSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah1.setPreferredSize(new java.awt.Dimension(80, 50));
-        btnPindahTambah1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPindahTambah1ActionPerformed(evt);
-            }
-        });
+        lblPelaporan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblPelaporan.setText("Pelaporan Produk");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPindahLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExit))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jLabel2)
-                                .addGap(174, 174, 174)
-                                .addComponent(jLabel3)
-                                .addGap(168, 168, 168)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel1)))
-                    .addComponent(btnPindahTambah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPindahKelola, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPindahLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(lblKelola)
+                        .addGap(140, 140, 140)
+                        .addComponent(lblPenjualan)
+                        .addGap(126, 126, 126)
+                        .addComponent(lblPelaporan))
+                    .addComponent(lblBanner))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -139,15 +127,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnPindahPenjualan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPindahKelola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPindahTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPenjualan)
+                    .addComponent(lblKelola))
+                .addGap(30, 30, 30)
+                .addComponent(lblBanner)
                 .addContainerGap())
         );
 
@@ -171,13 +157,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
         this.setVisible(false);
     }//GEN-LAST:event_btnPindahPenjualanActionPerformed
-
-    private void btnPindahTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahTambah1ActionPerformed
-        // TODO add your handling code
-        JOptionPane.showMessageDialog(null, "M.Zikri Alhaq - 173040028 \nRafly Yunandi A - 173040027\nM. Fahdy -173040030\nAndika Wahyu - 173040021");
-        
-        
-    }//GEN-LAST:event_btnPindahTambah1ActionPerformed
 
     private void btnPindahKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahKelolaActionPerformed
         try {
@@ -232,10 +211,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPindahKelola;
     private javax.swing.JButton btnPindahLaporan;
     private javax.swing.JButton btnPindahPenjualan;
-    private javax.swing.JButton btnPindahTambah1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblBanner;
+    private javax.swing.JLabel lblKelola;
+    private javax.swing.JLabel lblPelaporan;
+    private javax.swing.JLabel lblPenjualan;
     // End of variables declaration//GEN-END:variables
 }

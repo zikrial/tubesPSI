@@ -38,6 +38,10 @@ public class Produk {
         this.namaProduk = namaProduk;
     }
     
+    public Produk(int id) {
+        this.id = id;
+    }
+    
     public Produk() {
         namaProduk = "";
         namaJenis = "";

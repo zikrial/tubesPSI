@@ -63,7 +63,7 @@ public class LaporanFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonKembali = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLaporan = new javax.swing.JTable();
@@ -71,11 +71,11 @@ public class LaporanFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buttonKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clear Symbol-48.png"))); // NOI18N
-        buttonKembali.setText("Kembali");
-        buttonKembali.addActionListener(new java.awt.event.ActionListener() {
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clear Symbol-48.png"))); // NOI18N
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonKembaliActionPerformed(evt);
+                btnKembaliActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class LaporanFrame extends javax.swing.JFrame {
                         .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(buttonKembali)
+                        .addComponent(btnKembali)
                         .addGap(229, 229, 229)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
@@ -123,7 +123,7 @@ public class LaporanFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonKembali)
+                    .addComponent(btnKembali)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,10 +135,10 @@ public class LaporanFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembaliActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         new MainFrame().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_buttonKembaliActionPerformed
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
@@ -197,7 +197,7 @@ public class LaporanFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCetak;
-    private javax.swing.JButton buttonKembali;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLaporan;

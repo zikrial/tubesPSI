@@ -17,26 +17,33 @@ public class ProdukUtilities {
 
     public static int getTotal(int harga, int stok) {
         int totalHarga = 0;
-        totalHarga= harga * stok;
+        totalHarga = harga * stok;
         return totalHarga;
     }
-    
+
     public static boolean checkData(Produk pr) {
-       if(!pr.getNamaProduk().isEmpty() && !pr.getNamaJenis().equalsIgnoreCase("-- Pilih Jenis --") && pr.getHargaProduk() > 0 && pr.getStokProduk() > 0) {
-           return true;
-       } 
-       return false;
+        if (!pr.getNamaProduk().isEmpty() && !pr.getNamaJenis().equalsIgnoreCase("-- Pilih Jenis --") && pr.getHargaProduk() > 0 && pr.getStokProduk() > 0) {
+            return true;
+        }
+        return false;
     }
-    
+
+    public static boolean checkDataId(int id) {
+        if (id > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean checkData(String jenis) {
-       if(!jenis.isEmpty()) {
-           return true;
-       } 
-       return false;
+        if (!jenis.isEmpty()) {
+            return true;
+        }
+        return false;
     }
-    
+
     public static void checkNumber(KeyEvent a) {
-        if(Character.isAlphabetic(a.getKeyChar())) {
+        if (Character.isAlphabetic(a.getKeyChar())) {
             a.consume();
             JOptionPane.showMessageDialog(null, "Inputan tidak boleh selain angka");
         }

@@ -82,17 +82,17 @@ public class PenjualanFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         lblHalUtama = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblNama = new javax.swing.JLabel();
+        lblStok = new javax.swing.JLabel();
         btnTambah = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         tfStokTerjual = new javax.swing.JTextField();
         cmbNamaProduk = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransaksi = new javax.swing.JTable();
-        buttonProses = new javax.swing.JButton();
+        btnProses = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         tfId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,9 +100,9 @@ public class PenjualanFrame extends javax.swing.JFrame {
         lblHalUtama.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblHalUtama.setText("HASIL PENJUALAN");
 
-        jLabel1.setText("Nama  Produk :");
+        lblNama.setText("Nama  Produk :");
 
-        jLabel2.setText("Stok terjual : ");
+        lblStok.setText("Stok terjual : ");
 
         btnTambah.setText("Tambah");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +111,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clear Symbol-48.png"))); // NOI18N
-        jButton2.setText("Kembali");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clear Symbol-48.png"))); // NOI18N
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnKembaliActionPerformed(evt);
             }
         });
 
@@ -140,10 +140,10 @@ public class PenjualanFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblTransaksi);
 
-        buttonProses.setText("Proses");
-        buttonProses.addActionListener(new java.awt.event.ActionListener() {
+        btnProses.setText("Proses");
+        btnProses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonProsesActionPerformed(evt);
+                btnProsesActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Id : ");
+        lblId.setText("Id : ");
 
         tfId.setEnabled(false);
 
@@ -166,13 +166,13 @@ public class PenjualanFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
+                        .addComponent(btnKembali)
                         .addGap(238, 238, 238)
                         .addComponent(lblHalUtama))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonProses, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProses, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -180,11 +180,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfStokTerjual, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
+                                .addComponent(lblStok)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3))
+                                        .addComponent(lblNama)
+                                        .addComponent(lblId))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(cmbNamaProduk, 0, 725, Short.MAX_VALUE)
@@ -197,18 +197,18 @@ public class PenjualanFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHalUtama)
-                    .addComponent(jButton2))
+                    .addComponent(btnKembali))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel3)
+                        .addComponent(lblId)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(lblNama)
                             .addComponent(cmbNamaProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblStok)
                             .addComponent(tfStokTerjual, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -217,7 +217,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonProses, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnProses, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -227,7 +227,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         new MainFrame().setVisible(true);
         this.setVisible(false);
 
@@ -237,7 +237,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
             refreshTable();
         } catch (SQLException ex) {
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         // TODO add your handling code here:
@@ -327,7 +327,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblTransaksiMouseClicked
 
-    private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
+    private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tblTransaksi.getModel();
         int baris = model.getRowCount();
@@ -352,7 +352,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Transaksi masih kosong");
         }
-    }//GEN-LAST:event_buttonProsesActionPerformed
+    }//GEN-LAST:event_btnProsesActionPerformed
 
     private void tfStokTerjualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfStokTerjualKeyTyped
         // TODO add your handling code here:
@@ -403,15 +403,15 @@ public class PenjualanFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKembali;
+    private javax.swing.JButton btnProses;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JButton buttonProses;
     private javax.swing.JComboBox<String> cmbNamaProduk;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHalUtama;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblStok;
     private javax.swing.JTable tblTransaksi;
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfStokTerjual;
