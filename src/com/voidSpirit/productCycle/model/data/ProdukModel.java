@@ -202,4 +202,25 @@ public class ProdukModel {
         }
         return listProduk;
     }
+    
+    public int updateStok(int stok, int stokTerjual) throws SQLException {
+        List<Produk> listProduk;
+        Connection con = DatabaseUtilities.getConnection();
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("UPDATE produk SET stok_produk = " + stok + "Where id=?");
+            listProduk = new ArrayList<>();
+            while (rs.next()) {
+                Produk prd = new Produk();
+                prd.setStokProduk(rs.getInt("stok_produk") - stokTerjual);
+
+                listProduk.add(prd);
+            }
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return stok;
+    }
 }

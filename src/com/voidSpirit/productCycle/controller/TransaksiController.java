@@ -15,14 +15,29 @@ import java.util.List;
  * @author Zikri
  */
 public class TransaksiController {
-   
+
     public int tambahTransaksi(Transaksi transaksi) throws SQLException {
         TransaksiModel model = new TransaksiModel();
         return model.simpanTransaksi(transaksi);
     }
-    
-    public List<Transaksi> lihatTransaksi() throws SQLException{
+
+    public List<Transaksi> lihatTransaksi() throws SQLException {
         TransaksiModel model = new TransaksiModel();
         return model.lihatTransaksi();
+    }
+
+    public int cariId(Transaksi transaksi) throws SQLException {
+        TransaksiModel model = new TransaksiModel();
+        return model.getId(transaksi);
+    }
+
+    public int hapusTransaksi(int id) throws SQLException {
+        TransaksiModel model = new TransaksiModel();
+        return model.buangTransaksi(id);
+    }
+
+    public int hapusSemuaTransaksi() throws SQLException {
+        TransaksiModel model = new TransaksiModel();
+        return model.buangSeluruhTransaksi();
     }
 }

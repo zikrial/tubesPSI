@@ -72,4 +72,9 @@ public class ProdukController {
         ProdukModel model = new ProdukModel();
         return model.getId(produk);
     }
+    
+//    public int kurangStok(Produk produk, int stok, int stokTerjual) throws SQLException {
+//        ProdukModel model = new ProdukModel();
+//        return model.updateStok(produk, stok, stokTerjual);
+//    }
 }

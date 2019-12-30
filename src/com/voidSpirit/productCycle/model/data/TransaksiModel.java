@@ -59,4 +59,47 @@ public class TransaksiModel {
         }
         return listTransaksi;
     }
+        
+    public int getId(Transaksi transaksi) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        int id = 0;
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("SELECT id_transaksi FROM transaksi WHERE nama_produk = '" + transaksi.getNamaProduk() + "' AND stok_terjual = " + transaksi.getStokTerjual() + " AND total_pendapatan = " + transaksi.getTotalPendapatan());
+            while (rs.next()) {
+                id = rs.getInt("id_transaksi");
+            }
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return id;
+    }
+    
+    public int buangTransaksi(int id) throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+        try {
+            PreparedStatement stat = con.prepareStatement("DELETE FROM pengelola_produk.transaksi WHERE id_transaksi=?");
+            stat.setInt(1, id);
+            return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    public int buangSeluruhTransaksi() throws SQLException {
+        Connection con = DatabaseUtilities.getConnection();
+
+        try {
+            PreparedStatement stat = con.prepareStatement("TRUNCATE pengelola_produk.transaksi");
+            return stat.executeUpdate();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }

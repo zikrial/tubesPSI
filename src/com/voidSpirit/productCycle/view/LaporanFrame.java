@@ -63,7 +63,7 @@ public class LaporanFrame extends javax.swing.JFrame {
                 .addComponent(buttonKembali)
                 .addGap(229, 229, 229)
                 .addComponent(jLabel1)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(466, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -27,6 +27,12 @@ public class Transaksi {
         this.stokTerjual = stokTerjual;
         this.totalPendapatan = totalPendapatan;
     }
+    
+    public Transaksi(int id, String namaProduk, int stokTerjual) {
+        this.id = id;
+        this.namaProduk = namaProduk;
+        this.stokTerjual = stokTerjual;
+    }
 
     public int getId() {
         return id;
