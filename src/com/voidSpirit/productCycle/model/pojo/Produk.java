@@ -14,7 +14,6 @@ public class Produk {
     private int id;
     private String namaProduk;
     private String namaJenis;
-    private int idJenisProduk;
     private int hargaProduk;
     private int stokProduk;
     

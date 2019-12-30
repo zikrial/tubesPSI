@@ -25,9 +25,10 @@ public class ProdukModel {
     public int simpanProduk(Produk produk) throws SQLException {
         Connection con = DatabaseUtilities.getConnection();
         try {
+            int idJenis = getIdJenisProduk(produk.getNamaJenis());
             PreparedStatement stat = con.prepareStatement("INSERT INTO pengelola_produk.produk (nama_produk, id_jenis_produk, harga_produk, stok_produk) VALUES (?,?,?,?)");
             stat.setString(1, produk.getNamaProduk());
-            stat.setInt(2, getIdJenisProduk(produk.getNamaJenis()));
+            stat.setInt(2, idJenis);
             stat.setInt(3, produk.getHargaProduk());
             stat.setInt(4, produk.getStokProduk());
             return stat.executeUpdate();
@@ -86,7 +87,7 @@ public class ProdukModel {
         int jenis = 0;
         try {
             Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT produk.id_jenis_produk FROM produk, jenis_produk WHERE nama_jenis = '" + namaJenis + "' AND produk.id_jenis_produk = jenis_produk.id_jenis_produk");
+            ResultSet rs = state.executeQuery("SELECT id_jenis_produk FROM jenis_produk WHERE nama_jenis = '" + namaJenis + "'");
             while (rs.next()) {
                 jenis = rs.getInt("id_jenis_produk");
             }

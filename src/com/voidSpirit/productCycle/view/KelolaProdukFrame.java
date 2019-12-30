@@ -386,6 +386,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         textFieldId.getText();
         String nama = textFieldNama.getText();
         String jenis = (String) cmbJenis.getSelectedItem();
+        System.out.println(jenis);
         int harga = Integer.parseInt(textFieldHarga.getText());
         int stok = Integer.parseInt(texttFieldStok.getText());
         int status = 0;
