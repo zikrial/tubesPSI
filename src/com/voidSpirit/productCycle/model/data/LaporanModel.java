@@ -9,7 +9,11 @@ import com.voidSpirit.productCycle.model.pojo.Laporan;
 import com.voidSpirit.productCycle.utilites.DatabaseUtilities;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,5 +32,27 @@ public class LaporanModel {
                 con.close();
             }
         }
+    }
+
+    public List<Laporan> lihatLaporan() throws SQLException {
+        List<Laporan> listLaporan;
+        Connection con = DatabaseUtilities.getConnection();
+
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("SELECT hasil_penjualan FROM laporan");
+            listLaporan = new ArrayList<>();
+            while (rs.next()) {
+                Laporan prd = new Laporan();
+                prd.setHasilPenjualan(rs.getInt("hasil_penjualan"));
+
+                listLaporan.add(prd);
+            }
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return listLaporan;
     }
 }

@@ -8,6 +8,7 @@ package com.voidSpirit.productCycle.controller;
 import com.voidSpirit.productCycle.model.data.LaporanModel;
 import com.voidSpirit.productCycle.model.pojo.Laporan;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -18,5 +19,10 @@ public class LaporanController {
     public int tambahProduk(Laporan laporan) throws SQLException {
         LaporanModel model = new LaporanModel();
         return model.simpanPenjualan(laporan);
+    }
+
+    public List<Laporan> lihatLaporan() throws SQLException {
+        LaporanModel model = new LaporanModel();
+        return model.lihatLaporan();
     }
 }

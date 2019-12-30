@@ -8,6 +8,7 @@ package com.voidSpirit.productCycle.view;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +44,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnPindahTambah1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(940, 800));
         setSize(new java.awt.Dimension(0, 0));
 
         btnPindahLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pelaporan.png"))); // NOI18N
@@ -155,7 +155,11 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPindahLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahLaporanActionPerformed
-        new LaporanFrame().setVisible(true);
+        try {
+            new LaporanFrame().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_btnPindahLaporanActionPerformed
 
@@ -170,6 +174,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnPindahTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahTambah1ActionPerformed
         // TODO add your handling code
+        JOptionPane.showMessageDialog(null, "M.Zikri Alhaq - 173040028 \nRafly Yunandi A - 173040027\nM. Fahdy -173040030\nAndika Wahyu - 173040021");
+        
+        
     }//GEN-LAST:event_btnPindahTambah1ActionPerformed
 
     private void btnPindahKelolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPindahKelolaActionPerformed

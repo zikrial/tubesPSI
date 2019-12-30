@@ -46,7 +46,7 @@ public class ProdukModel {
             stat.setInt(2, getIdJenisProduk(produk.getNamaJenis()));
             stat.setInt(3, produk.getHargaProduk());
             stat.setInt(4, produk.getStokProduk());
-            stat.setInt(5, getId(produk));
+            stat.setInt(5, produk.getId());
             return stat.executeUpdate();
         } finally {
             if (con != null) {
@@ -86,7 +86,7 @@ public class ProdukModel {
         int jenis = 0;
         try {
             Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT id_jenis_produk FROM produk NATURAL JOIN jenis_produk WHERE nama_jenis = '" + namaJenis + "'");
+            ResultSet rs = state.executeQuery("SELECT produk.id_jenis_produk FROM produk, jenis_produk WHERE nama_jenis = '" + namaJenis + "' AND produk.id_jenis_produk = jenis_produk.id_jenis_produk");
             while (rs.next()) {
                 jenis = rs.getInt("id_jenis_produk");
             }
@@ -208,7 +208,7 @@ public class ProdukModel {
         Connection con = DatabaseUtilities.getConnection();
         try {
             Statement state = con.createStatement();
-            ResultSet rs = state.executeQuery("UPDATE produk SET stok_produk = " + stok + "Where id=?");
+            ResultSet rs = state.executeQuery("UPDATE produk SET stok_produk = " + stok + "WHERE id=?");
             listProduk = new ArrayList<>();
             while (rs.next()) {
                 Produk prd = new Produk();

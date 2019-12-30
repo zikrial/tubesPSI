@@ -328,7 +328,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         int status = 0;
 
         try {
-            status = con.ubahProduk(new Produk(nama, jenis, harga, stok));
+            status = con.ubahProduk(new Produk(id, nama, jenis, harga, stok));
         } catch (SQLException ex) {
             Logger.getLogger(KelolaProdukFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
