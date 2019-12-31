@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class LaporanController {
 
+    LaporanModel model = new LaporanModel();
+
     public int tambahProduk(Laporan laporan) throws SQLException {
-        LaporanModel model = new LaporanModel();
         return model.simpanPenjualan(laporan);
     }
 
     public List<Laporan> lihatLaporan() throws SQLException {
-        LaporanModel model = new LaporanModel();
         return model.lihatLaporan();
     }
 }

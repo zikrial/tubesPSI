@@ -47,6 +47,14 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         }
     }
 
+    private void isiField() {
+        tfId.setText("");
+        tfNama.setText("");
+        cmbJenis.setSelectedIndex(0);
+        tfStok.setText("");
+        tfHarga.setText("");
+    }
+
     public void populateDataToTable() throws SQLException {
         model = (DefaultTableModel) tblProduk.getModel();
         List<Produk> prd = con.lihatProduk();
@@ -365,6 +373,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Silahkan pilih yang ingin diubah");
         }
+        isiField();
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -396,8 +405,8 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Silahkan pilih yang poduk yang ingin dihapus");
         }
-        
 
+        isiField();
 
     }//GEN-LAST:event_btnHapusActionPerformed
 
@@ -441,6 +450,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Inputan tidak boleh kosong");
         }
 
+        isiField();
 
     }//GEN-LAST:event_btnTambahActionPerformed
 

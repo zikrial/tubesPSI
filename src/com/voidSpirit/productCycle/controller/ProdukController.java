@@ -19,6 +19,7 @@ import java.util.List;
 public class ProdukController {
 
     MainFrame mainFrame;
+    ProdukModel model = new ProdukModel();
 
     public ProdukController() {
         mainFrame = new MainFrame();
@@ -27,59 +28,49 @@ public class ProdukController {
     public void start() {
         mainFrame.setVisible(true);
     }
-       
+
     public int ubahProduk(Produk produk) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.gantiProduk(produk);
     }
-    
+
     public int tambahProduk(Produk produk) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.simpanProduk(produk);
     }
-    
-     public int hapusProduk(int id) throws SQLException {
-        ProdukModel model = new ProdukModel();
+
+    public int hapusProduk(int id) throws SQLException {
         return model.buangProduk(id);
     }
-    
+
     public int tambahJenis(JenisProduk jenisProduk) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.simpanJenis(jenisProduk);
     }
-    
-    public List<Produk> lihatProduk() throws SQLException{
-        ProdukModel model = new ProdukModel();
+
+    public List<Produk> lihatProduk() throws SQLException {
         return model.lihatProduk();
     }
-    
-    public List<Produk> lihatJenis() throws SQLException{
+
+    public List<Produk> lihatJenis() throws SQLException {
         ProdukModel model = new ProdukModel();
         return model.getJenis();
     }
-    
-    public List<Produk> lihatNama() throws SQLException{
-        ProdukModel model = new ProdukModel();
+
+    public List<Produk> lihatNama() throws SQLException {
         return model.getNama();
     }
-    
-    public int lihatHargaStok(Produk produk, int stok) throws SQLException{
-        ProdukModel model = new ProdukModel();
+
+    public int lihatHargaStok(Produk produk, int stok) throws SQLException {
         return model.getHargaStok(produk, stok);
     }
-    
+
     public int cariId(Produk produk) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.getId(produk);
     }
-    
+
     public int cariStok(String nama) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.getStok(nama);
     }
-    
+
     public int ubahStok(String nama, int stok) throws SQLException {
-        ProdukModel model = new ProdukModel();
         return model.updateStok(nama, stok);
     }
 }

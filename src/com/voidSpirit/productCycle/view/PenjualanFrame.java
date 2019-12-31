@@ -40,6 +40,12 @@ public class PenjualanFrame extends javax.swing.JFrame {
         isiKolom();
         populateDataToTable();
     }
+    
+    private void isiField() {
+        tfId.setText("");
+        cmbNamaProduk.setSelectedIndex(0);
+        tfStokTerjual.setText("");
+    }
 
     public void populateDataToTable() throws SQLException {
         model = (DefaultTableModel) tblTransaksi.getModel();
@@ -286,6 +292,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Inputan tidak boleh kosong");
         }
+        isiField();
     }//GEN-LAST:event_btnTambahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -319,6 +326,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Silahkan pilih yang ingin dihapus");
         }
+        isiField();
 
     }//GEN-LAST:event_btnHapusActionPerformed
 

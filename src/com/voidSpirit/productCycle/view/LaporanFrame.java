@@ -10,6 +10,8 @@ import com.voidSpirit.productCycle.model.pojo.Laporan;
 import com.voidSpirit.productCycle.model.pojo.Produk;
 import com.voidSpirit.productCycle.utilites.DatabaseUtilities;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,9 +48,19 @@ public class LaporanFrame extends javax.swing.JFrame {
         int i = 0;
 
         for (Laporan l : lp) {
+
+            DecimalFormat harga = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+            DecimalFormatSymbols frmtRp = new DecimalFormatSymbols();
+            
+            frmtRp.setCurrencySymbol("Rp. ");
+            frmtRp.setMonetaryDecimalSeparator(',');
+            frmtRp.setGroupingSeparator('.');
+            
+            harga.setDecimalFormatSymbols(frmtRp);            
+
             Object[] row = new Object[2];
             row[0] = ++i;
-            row[1] = l.getHasilPenjualan();
+            row[1] = harga.format(l.getHasilPenjualan());
             model.addRow(row);
         }
     }
