@@ -117,7 +117,6 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
         cmbJenis = new javax.swing.JComboBox<>();
         tfHarga = new javax.swing.JTextField();
         tfStok = new javax.swing.JTextField();
-        lblIdProduk = new javax.swing.JLabel();
         tfId = new javax.swing.JTextField();
         btnTambahJenis = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -197,12 +196,11 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
             }
         });
 
-        lblIdProduk.setText("Id Produk");
-
         tfId.setEnabled(false);
 
         btnTambahJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-menu-64.png"))); // NOI18N
-        btnTambahJenis.setText("Tambah Menu");
+        btnTambahJenis.setText("Tambah Jenis");
+        btnTambahJenis.setToolTipText("");
         btnTambahJenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTambahJenisActionPerformed(evt);
@@ -230,19 +228,18 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblStok)
+                                                .addComponent(lblHarga))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(39, 39, 39)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(lblIdProduk)
+                                                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(lblNama, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(lblJenis, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblStok)
-                                                .addComponent(lblHarga)))
+                                                        .addComponent(lblJenis, javax.swing.GroupLayout.Alignment.TRAILING)))))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tfStok)
@@ -281,9 +278,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdProduk))
+                        .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,7 +560,6 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHarga;
-    private javax.swing.JLabel lblIdProduk;
     private javax.swing.JLabel lblJenis;
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblStok;

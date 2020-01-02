@@ -54,6 +54,11 @@ public class ProdukController {
         return model.getJenis();
     }
 
+    public int lihatStokByNama(String nama) throws SQLException {
+        ProdukModel model = new ProdukModel();
+        return model.getStokByNama(nama);
+    }
+
     public List<Produk> lihatNama() throws SQLException {
         return model.getNama();
     }

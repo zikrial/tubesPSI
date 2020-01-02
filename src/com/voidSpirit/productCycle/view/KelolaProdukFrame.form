@@ -47,22 +47,21 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="tfId" alignment="1" min="-2" pref="376" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="lblStok" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblHarga" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblIdProduk" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tfId" min="-2" pref="1" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="lblNama" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       <Component id="lblJenis" alignment="1" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="lblStok" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblHarga" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -118,10 +117,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblIdProduk" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="tfId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfNama" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -287,11 +283,6 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfStokKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIdProduk">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Id Produk"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="tfId">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
@@ -302,7 +293,8 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icon/icons8-menu-64.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tambah Menu"/>
+        <Property name="text" type="java.lang.String" value="Tambah Jenis"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahJenisActionPerformed"/>

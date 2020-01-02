@@ -136,6 +136,24 @@ public class ProdukModel {
         }
         return listProduk;
     }
+    
+        public int getStokByNama(String nama) throws SQLException {
+        int stok = 0;
+        Connection con = DatabaseUtilities.getConnection();
+        try {
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery("SELECT stok_produk FROM produk WHERE nama_produk = '" + nama + "'");
+            while (rs.next()) {
+                stok = (rs.getInt("stok_produk"));
+            }
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return stok;
+    }
+
 
     public List<Produk> getNama() throws SQLException {
         List<Produk> listProduk;
