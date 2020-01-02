@@ -467,6 +467,7 @@ public class KelolaProdukFrame extends javax.swing.JFrame {
             }
             if (status == 1) {
                 JOptionPane.showMessageDialog(this, "Jenis " + jenis + " berhasil ditambahkan");
+                tfMenu.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Jenis gagal ditambahkan");
             }
